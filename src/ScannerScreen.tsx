@@ -1,17 +1,15 @@
+import { BarCodeScanner } from "expo-barcode-scanner";
 import * as Permissions from "expo-permissions";
 import * as React from "react";
-import { BarCodeScanner } from "expo-barcode-scanner";
 import { Component } from "react";
-import { Dimensions } from "react-native";
-import { NavigationScreenProps } from "react-navigation";
+import { Dimensions, Text, View } from "react-native";
 import { ifIphoneX } from "react-native-iphone-x-helper";
-import { Text } from "react-native";
-import { View } from "react-native";
-
+import { NavigationScreenProps } from "react-navigation";
 import { Action } from "./actions/Action";
 import { QrCodeParser } from "./actions/QrCodeParser";
 import { SlideButton } from "./SlideButton";
 import { Wallet } from "./Wallet";
+
 
 enum PermissionState {
   Requesting,

@@ -1,13 +1,6 @@
 import * as React from "react";
-import { Animated } from "react-native";
 import { Component } from "react";
-import { Easing } from "react-native";
-import { LayoutChangeEvent } from "react-native";
-import { LayoutRectangle } from "react-native";
-import { PanResponder } from "react-native";
-import { PanResponderInstance } from "react-native";
-import { Text } from "react-native";
-import { View } from "react-native";
+import { Animated, Easing, LayoutChangeEvent, LayoutRectangle, PanResponder, PanResponderInstance, Text, View } from "react-native";
 
 interface Props {
   disabled?: boolean;

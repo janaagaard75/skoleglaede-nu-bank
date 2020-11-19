@@ -1,12 +1,9 @@
+import { FontAwesome } from "@expo/vector-icons";
 import * as React from "react";
 import { Component } from "react";
-import { Dimensions } from "react-native";
-import { FontAwesome } from "@expo/vector-icons";
+import { Dimensions, Text, View } from "react-native";
 import { ifIphoneX } from "react-native-iphone-x-helper";
 import { NavigationScreenProps } from "react-navigation";
-import { Text } from "react-native";
-import { View } from "react-native";
-
 import { Button } from "./Button";
 import { Formatter } from "./Formatter";
 import { Wallet } from "./Wallet";

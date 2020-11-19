@@ -1,5 +1,4 @@
 import * as SecureStore from "expo-secure-store";
-
 import { Action } from "./actions/Action";
 
 export class Wallet {

@@ -1,9 +1,6 @@
-// Place your settings in this file to overwrite default and user settings.
 {
+  "cSpell.words": ["Skoleglæde.nu", "iphone", "konto", "Raleway"],
   "editor.formatOnSave": true,
   "editor.tabSize": 2,
-  "spellright.documentTypes": ["markdown", "plaintext"],
-  "spellright.ignoreFiles": ["**/.gitignore", "**/.spellignore", "yarn.lock"],
-  "spellright.language": ["da", "en"],
   "typescript.tsdk": "node_modules/typescript/lib"
 }

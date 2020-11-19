@@ -36,7 +36,7 @@ export class BrokeScreen extends Component<NavigationScreenProps> {
               fontSize: 16
             }}
           >
-            Nultil din konto til 0,00 kroner? Din opsparing ændres ikke.
+            Nulstil din konto til 0,00 kroner? Din opsparing ændres ikke.
           </Text>
           <Text
             style={{

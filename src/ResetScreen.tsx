@@ -36,7 +36,7 @@ export class ResetScreen extends Component<NavigationScreenProps> {
               fontSize: 16
             }}
           >
-            Nultil din konto til 4.000 kroner og din opsparing til 0 kroner?
+            Nulstil din konto til 4.000 kroner og din opsparing til 0 kroner?
           </Text>
           <Text
             style={{

@@ -27,7 +27,7 @@
     "react-native-iphone-x-helper": "^1.2.1",
     "react-native-screens": "~2.10.1",
     "react-navigation": "^3.11.1",
-    "tslib": "^1.10.0"
+    "tslib": "^2.0.3"
   },
   "devDependencies": {
     "@types/expo__vector-icons": "^9.0.1",

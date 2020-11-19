@@ -7,8 +7,8 @@ import { SlideButton } from "./SlideButton";
 import { Wallet } from "./Wallet";
 
 export class ResetScreen extends Component<NavigationScreenProps> {
-  constructor(props: NavigationScreenProps, context?: any) {
-    super(props, context);
+  constructor(props: NavigationScreenProps) {
+    super(props);
   }
 
   public static navigationOptions = {

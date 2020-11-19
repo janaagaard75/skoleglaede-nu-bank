@@ -22,8 +22,8 @@ interface State {
 }
 
 export class SlideButton extends Component<Props, State> {
-  constructor(props: Props, context?: any) {
-    super(props, context);
+  constructor(props: Props) {
+    super(props);
 
     this.state = {
       buttonSize: undefined,

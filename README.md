@@ -25,7 +25,7 @@ If you're on a Mac and have Xcode installed, you can run the app using the iOS S
 
 Known package: expo-barcode-scanner, expo-permissions, expo-secure-store, react-native-gesture-handler, react-native-screens, react-native, react, typescript, @types/react, @types/react-native, expo.
 
-Unknown packages: react-native-iphone-x-helper, react-navigation, tslib, @babel/core, @types/expo\_\_vector-icons, @types/react-navigation, expo-cli, prettier, tslint, tslint-config-prettier, tslint-eslint-rules, tslint-react.
+Unknown packages: react-native-iphone-x-helper, react-navigation, tslib, @types/expo\_\_vector-icons, @types/react-navigation, expo-cli, prettier, tslint, tslint-config-prettier, tslint-eslint-rules, tslint-react.
 
 ## To Do
 

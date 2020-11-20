@@ -10,7 +10,7 @@
     "android": "yarn run start --android",
     "check-types": "tsc",
     "ios": "yarn run start --ios",
-    "lint": "tslint src/**/*.ts src/**/*.tsx",
+    "lint": "eslint --format unix \"**/*.ts\" \"**/*.tsx\"",
     "optimize-assets": "expo optimize",
     "publish": "expo publish",
     "start": "yarn install && expo start",
@@ -34,12 +34,14 @@
     "@types/react": "~16.9.35",
     "@types/react-native": "~0.63.2",
     "@types/react-navigation": "^3.0.7",
+    "@typescript-eslint/eslint-plugin": "^4.8.1",
+    "@typescript-eslint/parser": "^4.8.1",
+    "eslint": "^7.13.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.21.5",
     "expo-cli": "^3.28.5",
     "prettier": "^2.1.2",
-    "tslint": "^5.18.0",
-    "tslint-config-prettier": "^1.18.0",
-    "tslint-eslint-rules": "^5.4.0",
-    "tslint-react": "^4.0.0",
     "typescript": "~3.9.2"
   }
 }

@@ -5,6 +5,25 @@ import { ResetScreen } from "./ResetScreen";
 import { ScannerScreen } from "./ScannerScreen";
 import { TransferScreen } from "./TransferScreen";
 
+const getSubScreen = (screen: any) => {
+  return {
+    navigationOptions: () => ({
+      headerBackTitleStyle: {
+        color: "#fff",
+      },
+      headerStyle: {
+        backgroundColor: "#46a096",
+        borderBottomColor: "#387f77",
+      },
+      headerTintColor: "#fff",
+      headerTitleStyle: {
+        color: "#fff",
+      },
+    }),
+    screen: screen,
+  };
+};
+
 const mainNavigator = createStackNavigator({
   MainScreen: {
     navigationOptions: () => ({
@@ -27,22 +46,3 @@ const mainNavigator = createStackNavigator({
 });
 
 export default createAppContainer(mainNavigator);
-
-const getSubScreen = (screen: any) => {
-  return {
-    navigationOptions: () => ({
-      headerBackTitleStyle: {
-        color: "#fff",
-      },
-      headerStyle: {
-        backgroundColor: "#46a096",
-        borderBottomColor: "#387f77",
-      },
-      headerTintColor: "#fff",
-      headerTitleStyle: {
-        color: "#fff",
-      },
-    }),
-    screen: screen,
-  };
-};

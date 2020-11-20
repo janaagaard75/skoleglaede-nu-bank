@@ -1,4 +1,4 @@
-import { BarCodeScanner } from "expo-barcode-scanner";
+import { BarCodeScannedCallback, BarCodeScanner } from "expo-barcode-scanner";
 import * as Permissions from "expo-permissions";
 import * as React from "react";
 import { Component } from "react";
@@ -136,7 +136,7 @@ export class ScannerScreen extends Component<NavigationScreenProps, State> {
     this.props.navigation.goBack();
   }
 
-  private handleBarCodeScanned = ({ type, data }: any) => {
+  private handleBarCodeScanned: BarCodeScannedCallback = ({ data }) => {
     const action = QrCodeParser.parseCodeValue(data);
     this.setState({
       codeScanned: true,

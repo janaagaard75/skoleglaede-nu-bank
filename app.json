@@ -28,12 +28,6 @@
     "locales": {
       "da": "./da.json"
     },
-    "packagerOpts": {
-      "assetExts": [
-        "ttf",
-        "mp4"
-      ]
-    },
     "githubUrl": "https://github.com/janaagaard75/skoleglaede-nu-bank"
   }
 }

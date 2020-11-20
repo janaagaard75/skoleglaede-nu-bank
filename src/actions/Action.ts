@@ -2,13 +2,13 @@ import { Formatter } from "../Formatter";
 
 export abstract class Action {
   constructor(amount: number) {
-    this.amount = amount;
+    this.actionAmount = amount;
   }
 
-  public readonly amount: number;
+  public readonly actionAmount: number;
 
   protected get formattedAmount(): string {
-    return Formatter.formatAsCurrency(this.amount);
+    return Formatter.formatAsCurrency(this.actionAmount);
   }
 
   public abstract get text(): string;

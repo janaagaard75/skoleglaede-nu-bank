@@ -7,6 +7,6 @@ export class SetAction extends Action {
   }
 
   public performAction(_previousAmount: number): number {
-    return this.amount;
+    return this.actionAmount;
   }
 }

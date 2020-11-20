@@ -6,7 +6,7 @@ export class SetAction extends Action {
     return `Nulstil til ${this.formattedAmount}?`;
   }
 
-  public performAction(previousAmount: number): number {
+  public performAction(_previousAmount: number): number {
     return this.amount;
   }
 }

@@ -34,7 +34,7 @@ export class SlideButton extends Component<Props, State> {
     this.animatedPosition = new Animated.Value(0);
 
     this.panResponder = PanResponder.create({
-      onPanResponderEnd: (e, gestureState) => {
+      onPanResponderEnd: (_e, _gestureState) => {
         if (this.state.sliderState === SliderState.DropWillTriggerAction) {
           this.props.onTrigger();
         }
@@ -56,7 +56,7 @@ export class SlideButton extends Component<Props, State> {
           }
         });
       },
-      onPanResponderMove: (e, gestureEvent) => {
+      onPanResponderMove: (_e, gestureEvent) => {
         if (
           this.state.buttonSize === undefined ||
           this.state.sliderSize === undefined
@@ -77,12 +77,12 @@ export class SlideButton extends Component<Props, State> {
 
         this.animatedPosition.setValue(restrictedDx);
       },
-      onPanResponderStart: (e, gestureState) => {
+      onPanResponderStart: (_e, _gestureState) => {
         this.setState({
           sliderState: SliderState.DropWillCancel
         });
       },
-      onStartShouldSetPanResponder: (e, gestureState) => !this.props.disabled
+      onStartShouldSetPanResponder: (_e, _gestureState) => !this.props.disabled
     });
   }
 

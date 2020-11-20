@@ -5,7 +5,7 @@ import { ResetScreen } from "./ResetScreen";
 import { ScannerScreen } from "./ScannerScreen";
 import { TransferScreen } from "./TransferScreen";
 
-const getSubScreen = (screen: any) => {
+const getSubScreen = <T,>(screen: T) => {
   return {
     navigationOptions: () => ({
       headerBackTitleStyle: {

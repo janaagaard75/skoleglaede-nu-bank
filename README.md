@@ -2,13 +2,6 @@
 
 Wallet with virtual money for [Skoleglæde.nu](https://skoleglæde.nu/).
 
-## Prerequisites
-
-Install `expo-cli` globally.
-
-    # Install expo-cli globally. Here done using Yarn - using npm is also possible.
-    yarn global add expo-cli
-
 ## Running the App
 
 Start the local server. This will give you a QR code that you can scan using the Expo Client app on your mobile device.

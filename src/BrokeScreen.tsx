@@ -12,26 +12,26 @@ export class BrokeScreen extends Component<NavigationScreenProps> {
   }
 
   public static navigationOptions = {
-    title: "Fallit"
+    title: "Fallit",
   };
 
   public render() {
     return (
       <View
         style={{
-          flex: 1
+          flex: 1,
         }}
       >
         <View
           style={{
             flex: 1,
             justifyContent: "center",
-            paddingHorizontal: 10
+            paddingHorizontal: 10,
           }}
         >
           <Text
             style={{
-              fontSize: 16
+              fontSize: 16,
             }}
           >
             Nulstil din konto til 0,00 kroner? Din opsparing ændres ikke.
@@ -39,7 +39,7 @@ export class BrokeScreen extends Component<NavigationScreenProps> {
           <Text
             style={{
               fontSize: 16,
-              marginTop: 10
+              marginTop: 10,
             }}
           >
             Denne handling kan ikke fortrydes.
@@ -49,7 +49,7 @@ export class BrokeScreen extends Component<NavigationScreenProps> {
           style={{
             marginBottom: ifIphoneX(50, 30),
             paddingHorizontal: 20,
-            width: "100%"
+            width: "100%",
           }}
         >
           <SlideButton onTrigger={() => this.broke()} title="Fallit" />

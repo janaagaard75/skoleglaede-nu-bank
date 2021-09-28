@@ -21,20 +21,20 @@ export class MainScreen extends Component<NavigationScreenProps, State> {
     this.state = {
       credit: Wallet.credit,
       savings: Wallet.savings,
-      windowWidth: Dimensions.get("window").width
+      windowWidth: Dimensions.get("window").width,
     };
 
     // react-navigate doesn't allow sharing state between screens, and Wallet is not observable, so we are setting state manually when navigating back to this screen.
     this.props.navigation.addListener("willFocus", () => {
       this.setState({
         credit: Wallet.credit,
-        savings: Wallet.savings
+        savings: Wallet.savings,
       });
     });
   }
 
   public static navigationOptions = {
-    title: "Skoleglæde.nu Bank"
+    title: "Skoleglæde.nu Bank",
   };
 
   public render() {
@@ -42,14 +42,14 @@ export class MainScreen extends Component<NavigationScreenProps, State> {
       <View
         style={{
           backgroundColor: "#fff",
-          flex: 1
+          flex: 1,
         }}
       >
         <View
           style={{
             alignSelf: "flex-end",
             paddingRight: 20,
-            paddingTop: 10
+            paddingTop: 10,
           }}
         >
           <Button
@@ -60,20 +60,20 @@ export class MainScreen extends Component<NavigationScreenProps, State> {
         </View>
         <View
           style={{
-            flex: 1
+            flex: 1,
           }}
         />
         {this.renderAccount("credit-card", "Konto", this.state.credit)}
         {this.renderAccount("bank", "Opsparing", this.state.savings)}
         <View
           style={{
-            flex: 1
+            flex: 1,
           }}
         />
         <View
           style={{
             marginBottom: 10,
-            paddingHorizontal: 20
+            paddingHorizontal: 20,
           }}
         >
           <Button
@@ -85,7 +85,7 @@ export class MainScreen extends Component<NavigationScreenProps, State> {
         <View
           style={{
             marginBottom: 10,
-            paddingHorizontal: 20
+            paddingHorizontal: 20,
           }}
         >
           <Button
@@ -97,7 +97,7 @@ export class MainScreen extends Component<NavigationScreenProps, State> {
         <View
           style={{
             marginBottom: ifIphoneX(50, 30),
-            paddingHorizontal: 20
+            paddingHorizontal: 20,
           }}
         >
           <Button
@@ -119,28 +119,28 @@ export class MainScreen extends Component<NavigationScreenProps, State> {
       <View
         style={{
           flex: 1,
-          justifyContent: "center"
+          justifyContent: "center",
         }}
       >
         <View
           style={{
             alignItems: "center",
             flexDirection: "row",
-            justifyContent: "center"
+            justifyContent: "center",
           }}
         >
           <FontAwesome
             style={{
               fontSize: 0.05 * this.state.windowWidth,
               marginRight: 5,
-              width: 24
+              width: 24,
             }}
             name={icon}
           />
           <Text
             style={{
               alignSelf: "center",
-              fontSize: 0.05 * this.state.windowWidth
+              fontSize: 0.05 * this.state.windowWidth,
             }}
           >
             {title}
@@ -150,7 +150,7 @@ export class MainScreen extends Component<NavigationScreenProps, State> {
           style={{
             alignSelf: "center",
             fontSize: 0.13 * this.state.windowWidth,
-            paddingRight: 10
+            paddingRight: 10,
           }}
         >
           {Formatter.formatAsCurrency(amount)}

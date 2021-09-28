@@ -1,51 +1,48 @@
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import * as React from "react";
 import { Component } from "react";
+import { Text, View } from "react-native";
 import { ifIphoneX } from "react-native-iphone-x-helper";
-import { NavigationScreenProps } from "react-navigation";
-import { Text } from "react-native";
-import { View } from "react-native";
-
+import { HomeStackParamList } from "./App";
 import { Button } from "./Button";
 import { Formatter } from "./Formatter";
 import { SlideButton } from "./SlideButton";
 import { Wallet } from "./Wallet";
 
+type Props = NativeStackScreenProps<HomeStackParamList, "ScannerScreen">;
+
 enum TransferAmount {
   None = 0,
   Transfer200 = 200,
   Transfer500 = 500,
-  Transfer1000 = 1000
+  Transfer1000 = 1000,
 }
 
 interface State {
   selectedTransfer: TransferAmount;
 }
 
-export class TransferScreen extends Component<NavigationScreenProps, State> {
-  constructor(props: NavigationScreenProps, context?: any) {
-    super(props, context);
+export class TransferScreen extends Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
 
     this.state = {
-      selectedTransfer: TransferAmount.None
+      selectedTransfer: TransferAmount.None,
     };
   }
-
-  public static navigationOptions = {
-    title: "Overfør"
-  };
 
   public render() {
     return (
       <View
         style={{
           backgroundColor: "#fff",
-          flex: 1
+          flex: 1,
         }}
       >
         <View
           style={{
             marginHorizontal: 20,
-            marginTop: 30
+            marginTop: 30,
           }}
         >
           <Text>
@@ -65,7 +62,7 @@ export class TransferScreen extends Component<NavigationScreenProps, State> {
             alignSelf: "center",
             flex: 1,
             justifyContent: "center",
-            width: "50%"
+            width: "50%",
           }}
         >
           {this.renderTransferAmount(TransferAmount.Transfer200)}
@@ -76,7 +73,7 @@ export class TransferScreen extends Component<NavigationScreenProps, State> {
           style={{
             marginBottom: ifIphoneX(50, 30),
             paddingHorizontal: 20,
-            width: "100%"
+            width: "100%",
           }}
         >
           <SlideButton onTrigger={() => this.transfer()} title="Overfør" />
@@ -92,7 +89,7 @@ export class TransferScreen extends Component<NavigationScreenProps, State> {
       <View
         style={{
           marginVertical: 5,
-          width: "100%"
+          width: "100%",
         }}
       >
         <Button

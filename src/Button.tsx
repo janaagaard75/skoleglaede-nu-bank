@@ -1,7 +1,6 @@
 import * as React from "react";
 import { Component } from "react";
-import { Text } from "react-native";
-import { TouchableOpacity } from "react-native";
+import { Text, TouchableOpacity } from "react-native";
 
 interface Props {
   fontSize: number;
@@ -24,13 +23,13 @@ export class Button extends Component<Props> {
           borderWidth: 2,
           paddingHorizontal: Math.round((this.props.fontSize / 16) * 11),
           paddingVertical: Math.round((this.props.fontSize / 16) * 9),
-          width: "100%"
+          width: "100%",
         }}
       >
         <Text
           style={{
             color: this.props.disabled ? "#999" : "#000",
-            fontSize: this.props.fontSize
+            fontSize: this.props.fontSize,
           }}
         >
           {this.props.title}

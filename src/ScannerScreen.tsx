@@ -1,68 +1,65 @@
-import * as Permissions from "expo-permissions";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { BarCodeScannedCallback, BarCodeScanner } from "expo-barcode-scanner";
 import * as React from "react";
-import { BarCodeScanner } from "expo-barcode-scanner";
 import { Component } from "react";
-import { Dimensions } from "react-native";
-import { NavigationScreenProps } from "react-navigation";
+import { Dimensions, Text, View } from "react-native";
 import { ifIphoneX } from "react-native-iphone-x-helper";
-import { Text } from "react-native";
-import { View } from "react-native";
-
 import { Action } from "./actions/Action";
 import { QrCodeParser } from "./actions/QrCodeParser";
+import { HomeStackParamList } from "./App";
 import { SlideButton } from "./SlideButton";
 import { Wallet } from "./Wallet";
 
-enum PermissionState {
+type Props = NativeStackScreenProps<HomeStackParamList, "ScannerScreen">;
+
+enum CameraPermissionState {
   Requesting,
   Denied,
-  Granted
+  Granted,
 }
 
 interface State {
-  cameraPermission: PermissionState;
+  cameraPermission: CameraPermissionState;
   codeScanned: boolean;
   currentAction: Action | undefined;
   windowWidth: number;
 }
 
-export class ScannerScreen extends Component<NavigationScreenProps, State> {
-  constructor(props: NavigationScreenProps, context?: any) {
-    super(props, context);
+export class ScannerScreen extends Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
 
     this.state = {
-      cameraPermission: PermissionState.Requesting,
+      cameraPermission: CameraPermissionState.Requesting,
       codeScanned: false,
       currentAction: undefined,
-      windowWidth: Dimensions.get("window").width
+      windowWidth: Dimensions.get("window").width,
     };
   }
 
-  public static navigationOptions = {
-    title: "Scan QR-kode"
-  };
-
   public async componentDidMount() {
-    const { status } = await Permissions.askAsync(Permissions.CAMERA);
+    const { status } = await BarCodeScanner.requestPermissionsAsync();
     this.setState({
       cameraPermission:
-        status === "granted" ? PermissionState.Granted : PermissionState.Denied
+        status === "granted"
+          ? CameraPermissionState.Granted
+          : CameraPermissionState.Denied,
     });
   }
 
   public render() {
-    if (this.state.cameraPermission === PermissionState.Requesting) {
+    if (this.state.cameraPermission === CameraPermissionState.Requesting) {
       return <View />;
     }
 
-    if (this.state.cameraPermission === PermissionState.Denied) {
+    if (this.state.cameraPermission === CameraPermissionState.Denied) {
       return (
         <View
           style={{
             alignContent: "center",
             flex: 1,
             justifyContent: "center",
-            paddingHorizontal: 20
+            paddingHorizontal: 20,
           }}
         >
           <Text>
@@ -84,7 +81,7 @@ export class ScannerScreen extends Component<NavigationScreenProps, State> {
           style={{
             alignItems: "center",
             flex: 1,
-            justifyContent: "center"
+            justifyContent: "center",
           }}
         >
           <BarCodeScanner
@@ -92,7 +89,7 @@ export class ScannerScreen extends Component<NavigationScreenProps, State> {
             onBarCodeScanned={this.handleBarCodeScanned}
             style={{
               height: roundedViewfinderSize,
-              width: roundedViewfinderSize
+              width: roundedViewfinderSize,
             }}
           />
         </View>
@@ -101,7 +98,7 @@ export class ScannerScreen extends Component<NavigationScreenProps, State> {
             fontSize: 20,
             marginBottom: 10,
             marginTop: 10,
-            textAlign: "center"
+            textAlign: "center",
           }}
         >
           {this.getText(this.state.currentAction)}
@@ -110,7 +107,7 @@ export class ScannerScreen extends Component<NavigationScreenProps, State> {
           style={{
             marginBottom: ifIphoneX(50, 30),
             marginTop: 10,
-            paddingHorizontal: 20
+            paddingHorizontal: 20,
           }}
         >
           <SlideButton
@@ -132,17 +129,17 @@ export class ScannerScreen extends Component<NavigationScreenProps, State> {
 
     this.setState({
       codeScanned: false,
-      currentAction: undefined
+      currentAction: undefined,
     });
 
     this.props.navigation.goBack();
   }
 
-  private handleBarCodeScanned = ({ type, data }: any) => {
+  private handleBarCodeScanned: BarCodeScannedCallback = ({ data }) => {
     const action = QrCodeParser.parseCodeValue(data);
     this.setState({
       codeScanned: true,
-      currentAction: action
+      currentAction: action,
     });
   };
 

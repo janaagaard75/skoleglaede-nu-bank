@@ -1,13 +1,15 @@
 import * as React from "react";
-import { Animated } from "react-native";
 import { Component } from "react";
-import { Easing } from "react-native";
-import { LayoutChangeEvent } from "react-native";
-import { LayoutRectangle } from "react-native";
-import { PanResponder } from "react-native";
-import { PanResponderInstance } from "react-native";
-import { Text } from "react-native";
-import { View } from "react-native";
+import {
+  Animated,
+  Easing,
+  LayoutChangeEvent,
+  LayoutRectangle,
+  PanResponder,
+  PanResponderInstance,
+  Text,
+  View,
+} from "react-native";
 
 interface Props {
   disabled?: boolean;
@@ -19,7 +21,7 @@ enum SliderState {
   Animating,
   DropWillCancel,
   DropWillTriggerAction,
-  Idle
+  Idle,
 }
 
 interface State {
@@ -29,41 +31,41 @@ interface State {
 }
 
 export class SlideButton extends Component<Props, State> {
-  constructor(props: Props, context?: any) {
-    super(props, context);
+  constructor(props: Props) {
+    super(props);
 
     this.state = {
       buttonSize: undefined,
       sliderSize: undefined,
-      sliderState: SliderState.Idle
+      sliderState: SliderState.Idle,
     };
 
     this.animatedPosition = new Animated.Value(0);
 
     this.panResponder = PanResponder.create({
-      onPanResponderEnd: (e, gestureState) => {
+      onPanResponderEnd: (_e, _gestureState) => {
         if (this.state.sliderState === SliderState.DropWillTriggerAction) {
           this.props.onTrigger();
         }
 
         this.setState({
-          sliderState: SliderState.Animating
+          sliderState: SliderState.Animating,
         });
 
         Animated.timing(this.animatedPosition, {
           duration: 100,
           easing: Easing.ease,
           toValue: 0,
-          useNativeDriver: true
+          useNativeDriver: true,
         }).start(() => {
           if (this.state.sliderState !== SliderState.DropWillCancel) {
             this.setState({
-              sliderState: SliderState.Idle
+              sliderState: SliderState.Idle,
             });
           }
         });
       },
-      onPanResponderMove: (e, gestureEvent) => {
+      onPanResponderMove: (_e, gestureEvent) => {
         if (
           this.state.buttonSize === undefined ||
           this.state.sliderSize === undefined
@@ -79,17 +81,17 @@ export class SlideButton extends Component<Props, State> {
         this.setState({
           sliderState: withinDropZone
             ? SliderState.DropWillTriggerAction
-            : SliderState.DropWillCancel
+            : SliderState.DropWillCancel,
         });
 
         this.animatedPosition.setValue(restrictedDx);
       },
-      onPanResponderStart: (e, gestureState) => {
+      onPanResponderStart: (_e, _gestureState) => {
         this.setState({
-          sliderState: SliderState.DropWillCancel
+          sliderState: SliderState.DropWillCancel,
         });
       },
-      onStartShouldSetPanResponder: (e, gestureState) => !this.props.disabled
+      onStartShouldSetPanResponder: (_e, _gestureState) => !this.props.disabled,
     });
   }
 
@@ -100,23 +102,23 @@ export class SlideButton extends Component<Props, State> {
     const animatedViewStyle = {
       transform: [
         {
-          translateX: this.animatedPosition
-        }
-      ]
+          translateX: this.animatedPosition,
+        },
+      ],
     };
 
     return (
       <View
         style={{
           borderWidth: 2,
-          padding: 3
+          padding: 3,
         }}
       >
         <View
-          onLayout={layoutEvent => this.setSliderSize(layoutEvent)}
+          onLayout={(layoutEvent) => this.setSliderSize(layoutEvent)}
           style={{
             alignItems: "flex-start",
-            borderColor: "#000"
+            borderColor: "#000",
           }}
         >
           <Animated.View
@@ -124,14 +126,14 @@ export class SlideButton extends Component<Props, State> {
             {...this.panResponder.panHandlers}
           >
             <Text
-              onLayout={layoutEvent => this.setButtonSize(layoutEvent)}
+              onLayout={(layoutEvent) => this.setButtonSize(layoutEvent)}
               style={{
                 borderColor: this.props.disabled ? "#999" : "#000",
                 borderWidth: 2,
                 color: this.props.disabled ? "#999" : "#000",
                 fontSize: 16,
                 paddingHorizontal: 8,
-                paddingVertical: 6
+                paddingVertical: 6,
               }}
             >
               {this.props.title} &#x21E8;
@@ -156,13 +158,13 @@ export class SlideButton extends Component<Props, State> {
 
   private setButtonSize(layoutEvent: LayoutChangeEvent): void {
     this.setState({
-      buttonSize: layoutEvent.nativeEvent.layout
+      buttonSize: layoutEvent.nativeEvent.layout,
     });
   }
 
   private setSliderSize(layoutEvent: LayoutChangeEvent): void {
     this.setState({
-      sliderSize: layoutEvent.nativeEvent.layout
+      sliderSize: layoutEvent.nativeEvent.layout,
     });
   }
 }

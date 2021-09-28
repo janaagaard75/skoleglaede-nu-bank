@@ -6,6 +6,6 @@ export class SubtractAction extends Action {
   }
 
   public performAction(previousAmount: number): number {
-    return (previousAmount -= this.amount);
+    return previousAmount - this.actionAmount;
   }
 }

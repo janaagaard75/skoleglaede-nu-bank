@@ -1,50 +1,59 @@
-import { createAppContainer } from "react-navigation";
-import { createStackNavigator } from "react-navigation";
-
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import React from "react";
 import { BrokeScreen } from "./BrokeScreen";
-import { MainScreen } from "./MainScreen";
+import { HomeScreen } from "./HomeScreen";
 import { ResetScreen } from "./ResetScreen";
 import { ScannerScreen } from "./ScannerScreen";
-import { TransferScreen } from "./TranferScreen";
+import { TransferScreen } from "./TransferScreen";
 
-const mainNavigator = createStackNavigator({
-  MainScreen: {
-    navigationOptions: () => ({
-      headerBackTitle: "Tilbage",
-      headerStyle: {
-        backgroundColor: "#46a096",
-        borderBottomColor: "#387f77"
-      },
-      headerTitleStyle: {
-        color: "#fff"
-      }
-    }),
-    screen: MainScreen
-  },
-  // tslint:disable-next-line:object-literal-sort-keys
-  BrokeScreen: getSubScreen(BrokeScreen),
-  ResetScreen: getSubScreen(ResetScreen),
-  ScannerScreen: getSubScreen(ScannerScreen),
-  TransferScreen: getSubScreen(TransferScreen)
-});
+const Stack = createNativeStackNavigator();
 
-export default createAppContainer(mainNavigator);
+export type HomeStackParamList = {
+  HomeScreen: undefined;
+  BrokeScreen: undefined;
+  ResetScreen: undefined;
+  ScannerScreen: undefined;
+  TransferScreen: undefined;
+};
 
-function getSubScreen(screen: any) {
-  return {
-    navigationOptions: () => ({
-      headerBackTitleStyle: {
-        color: "#fff"
-      },
-      headerStyle: {
-        backgroundColor: "#46a096",
-        borderBottomColor: "#387f77"
-      },
-      headerTintColor: "#fff",
-      headerTitleStyle: {
-        color: "#fff"
-      }
-    }),
-    screen: screen
-  };
-}
+export const App = () => (
+  <NavigationContainer>
+    <Stack.Navigator
+      initialRouteName="HomeScreen"
+      screenOptions={{
+        headerBackTitle: "Tilbage",
+        headerStyle: {
+          backgroundColor: "#46a096",
+        },
+        headerTintColor: "#fff",
+      }}
+    >
+      <Stack.Screen
+        name="HomeScreen"
+        component={HomeScreen}
+        options={{ title: "Skoleglæde.nu Bank" }}
+      />
+      <Stack.Screen
+        name="BrokeScreen"
+        component={BrokeScreen}
+        options={{ title: "Fallit" }}
+      />
+      <Stack.Screen
+        name="ResetScreen"
+        component={ResetScreen}
+        options={{ title: "Nulstil" }}
+      />
+      <Stack.Screen
+        name="ScannerScreen"
+        component={ScannerScreen}
+        options={{ title: "Scan QR-kode" }}
+      />
+      <Stack.Screen
+        name="TransferScreen"
+        component={TransferScreen}
+        options={{ title: "Overfør" }}
+      />
+    </Stack.Navigator>
+  </NavigationContainer>
+);

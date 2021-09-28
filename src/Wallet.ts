@@ -1,5 +1,4 @@
 import * as SecureStore from "expo-secure-store";
-
 import { Action } from "./actions/Action";
 
 export class Wallet {
@@ -68,7 +67,7 @@ export class Wallet {
   private static async save() {
     const wallet = {
       credit: this._credit,
-      savings: this._savings
+      savings: this._savings,
     };
 
     const walletString = JSON.stringify(wallet);

@@ -13,6 +13,7 @@ type Props = NativeStackScreenProps<HomeStackParamList, "ScannerScreen">;
 
 enum TransferAmount {
   None = 0,
+  Transfer100 = 100,
   Transfer200 = 200,
   Transfer500 = 500,
   Transfer1000 = 1000,
@@ -65,6 +66,7 @@ export class TransferScreen extends Component<Props, State> {
             width: "50%",
           }}
         >
+          {this.renderTransferAmount(TransferAmount.Transfer100)}
           {this.renderTransferAmount(TransferAmount.Transfer200)}
           {this.renderTransferAmount(TransferAmount.Transfer500)}
           {this.renderTransferAmount(TransferAmount.Transfer1000)}

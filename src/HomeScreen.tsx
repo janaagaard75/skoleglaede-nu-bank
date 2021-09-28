@@ -17,7 +17,7 @@ interface State {
   windowWidth: number;
 }
 
-export class MainScreen extends Component<Props, State> {
+export class HomeScreen extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
 

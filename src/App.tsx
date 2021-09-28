@@ -2,7 +2,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
 import { BrokeScreen } from "./BrokeScreen";
-import { MainScreen } from "./MainScreen";
+import { HomeScreen } from "./HomeScreen";
 import { ResetScreen } from "./ResetScreen";
 import { ScannerScreen } from "./ScannerScreen";
 import { TransferScreen } from "./TransferScreen";
@@ -29,10 +29,9 @@ export const App = () => (
         headerTintColor: "#fff",
       }}
     >
-      {/* TODO: Rename to HomeScreen. */}
       <Stack.Screen
         name="HomeScreen"
-        component={MainScreen}
+        component={HomeScreen}
         options={{ title: "Skoleglæde.nu Bank" }}
       />
       <Stack.Screen

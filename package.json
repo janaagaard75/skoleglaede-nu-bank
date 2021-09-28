@@ -16,6 +16,10 @@
     "start": "yarn install && expo start",
     "validate": "yarn install --frozen-lockfile && yarn run check-types && yarn run lint"
   },
+  "engines": {
+    "node": ">=14.0.0",
+    "yarn": ">=1.22"
+  },
   "dependencies": {
     "@expo/vector-icons": "^12.0.5",
     "@react-navigation/native": "^6.0.4",

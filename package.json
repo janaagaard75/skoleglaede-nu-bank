@@ -18,6 +18,8 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^12.0.0",
+    "@react-navigation/native": "^6.0.4",
+    "@react-navigation/native-stack": "^6.2.2",
     "expo": "^42.0.0",
     "expo-barcode-scanner": "~10.2.2",
     "expo-permissions": "~12.1.1",
@@ -26,15 +28,14 @@
     "react-native": "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz",
     "react-native-gesture-handler": "~1.10.2",
     "react-native-iphone-x-helper": "^1.2.1",
+    "react-native-safe-area-context": "3.2.0",
     "react-native-screens": "~3.4.0",
-    "react-navigation": "^3.11.1",
     "tslib": "^2.0.3"
   },
   "devDependencies": {
     "@babel/core": "^7.15.5",
     "@types/react": "~16.9.35",
     "@types/react-native": "~0.63.2",
-    "@types/react-navigation": "^3.0.7",
     "@typescript-eslint/eslint-plugin": "^4.8.1",
     "@typescript-eslint/parser": "^4.8.1",
     "babel-preset-expo": "8.3.0",

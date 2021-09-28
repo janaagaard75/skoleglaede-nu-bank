@@ -1,12 +1,15 @@
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import * as React from "react";
 import { Component } from "react";
 import { Text, View } from "react-native";
 import { ifIphoneX } from "react-native-iphone-x-helper";
-import { NavigationScreenProps } from "react-navigation";
+import { HomeStackParamList } from "./App";
 import { Button } from "./Button";
 import { Formatter } from "./Formatter";
 import { SlideButton } from "./SlideButton";
 import { Wallet } from "./Wallet";
+
+type Props = NativeStackScreenProps<HomeStackParamList, "ScannerScreen">;
 
 enum TransferAmount {
   None = 0,
@@ -19,18 +22,14 @@ interface State {
   selectedTransfer: TransferAmount;
 }
 
-export class TransferScreen extends Component<NavigationScreenProps, State> {
-  constructor(props: NavigationScreenProps) {
+export class TransferScreen extends Component<Props, State> {
+  constructor(props: Props) {
     super(props);
 
     this.state = {
       selectedTransfer: TransferAmount.None,
     };
   }
-
-  public static navigationOptions = {
-    title: "Overfør",
-  };
 
   public render() {
     return (

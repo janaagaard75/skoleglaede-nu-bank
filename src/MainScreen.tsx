@@ -1,12 +1,15 @@
 import { FontAwesome } from "@expo/vector-icons";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import * as React from "react";
 import { Component } from "react";
 import { Dimensions, Text, View } from "react-native";
 import { ifIphoneX } from "react-native-iphone-x-helper";
-import { NavigationScreenProps } from "react-navigation";
+import { HomeStackParamList } from "./App";
 import { Button } from "./Button";
 import { Formatter } from "./Formatter";
 import { Wallet } from "./Wallet";
+
+type Props = NativeStackScreenProps<HomeStackParamList, "HomeScreen">;
 
 interface State {
   credit: number;
@@ -14,8 +17,8 @@ interface State {
   windowWidth: number;
 }
 
-export class MainScreen extends Component<NavigationScreenProps, State> {
-  constructor(props: NavigationScreenProps) {
+export class MainScreen extends Component<Props, State> {
+  constructor(props: Props) {
     super(props);
 
     this.state = {
@@ -25,17 +28,15 @@ export class MainScreen extends Component<NavigationScreenProps, State> {
     };
 
     // react-navigate doesn't allow sharing state between screens, and Wallet is not observable, so we are setting state manually when navigating back to this screen.
-    this.props.navigation.addListener("willFocus", () => {
-      this.setState({
-        credit: Wallet.credit,
-        savings: Wallet.savings,
-      });
+    this.props.navigation.addListener("transitionEnd", (event) => {
+      if (!event.data.closing) {
+        this.setState({
+          credit: Wallet.credit,
+          savings: Wallet.savings,
+        });
+      }
     });
   }
-
-  public static navigationOptions = {
-    title: "Skoleglæde.nu Bank",
-  };
 
   public render() {
     return (

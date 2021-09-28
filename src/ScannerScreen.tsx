@@ -1,58 +1,59 @@
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { BarCodeScannedCallback, BarCodeScanner } from "expo-barcode-scanner";
 import * as Permissions from "expo-permissions";
 import * as React from "react";
 import { Component } from "react";
 import { Dimensions, Text, View } from "react-native";
 import { ifIphoneX } from "react-native-iphone-x-helper";
-import { NavigationScreenProps } from "react-navigation";
 import { Action } from "./actions/Action";
 import { QrCodeParser } from "./actions/QrCodeParser";
+import { HomeStackParamList } from "./App";
 import { SlideButton } from "./SlideButton";
 import { Wallet } from "./Wallet";
 
-enum PermissionState {
+type Props = NativeStackScreenProps<HomeStackParamList, "ScannerScreen">;
+
+enum CameraPermissionState {
   Requesting,
   Denied,
   Granted,
 }
 
 interface State {
-  cameraPermission: PermissionState;
+  cameraPermission: CameraPermissionState;
   codeScanned: boolean;
   currentAction: Action | undefined;
   windowWidth: number;
 }
 
-export class ScannerScreen extends Component<NavigationScreenProps, State> {
-  constructor(props: NavigationScreenProps) {
+export class ScannerScreen extends Component<Props, State> {
+  constructor(props: Props) {
     super(props);
 
     this.state = {
-      cameraPermission: PermissionState.Requesting,
+      cameraPermission: CameraPermissionState.Requesting,
       codeScanned: false,
       currentAction: undefined,
       windowWidth: Dimensions.get("window").width,
     };
   }
 
-  public static navigationOptions = {
-    title: "Scan QR-kode",
-  };
-
   public async componentDidMount() {
     const { status } = await Permissions.askAsync(Permissions.CAMERA);
     this.setState({
       cameraPermission:
-        status === "granted" ? PermissionState.Granted : PermissionState.Denied,
+        status === "granted"
+          ? CameraPermissionState.Granted
+          : CameraPermissionState.Denied,
     });
   }
 
   public render() {
-    if (this.state.cameraPermission === PermissionState.Requesting) {
+    if (this.state.cameraPermission === CameraPermissionState.Requesting) {
       return <View />;
     }
 
-    if (this.state.cameraPermission === PermissionState.Denied) {
+    if (this.state.cameraPermission === CameraPermissionState.Denied) {
       return (
         <View
           style={{

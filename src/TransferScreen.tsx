@@ -1,6 +1,5 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import * as React from "react";
-import { Component } from "react";
+import React, { Component } from "react";
 import { Text, View } from "react-native";
 import { ifIphoneX } from "react-native-iphone-x-helper";
 import { HomeStackParamList } from "./App";
@@ -17,6 +16,7 @@ enum TransferAmount {
   Transfer200 = 200,
   Transfer500 = 500,
   Transfer1000 = 1000,
+  TransferCustom = -1,
 }
 
 interface State {

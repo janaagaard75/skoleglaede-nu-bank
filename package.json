@@ -17,6 +17,7 @@
     "validate": "yarn install --frozen-lockfile && yarn run check-types && yarn run lint"
   },
   "dependencies": {
+    "@expo/vector-icons": "^12.0.0",
     "expo": "^42.0.0",
     "expo-barcode-scanner": "~10.2.2",
     "expo-permissions": "~12.1.1",
@@ -30,7 +31,6 @@
     "tslib": "^2.0.3"
   },
   "devDependencies": {
-    "@types/expo__vector-icons": "^9.0.1",
     "@types/react": "~16.9.35",
     "@types/react-native": "~0.63.2",
     "@types/react-navigation": "^3.0.7",

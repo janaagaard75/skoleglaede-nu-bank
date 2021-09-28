@@ -111,7 +111,7 @@ export class MainScreen extends Component<NavigationScreenProps, State> {
   }
 
   private renderAccount(
-    icon: string,
+    icon: "credit-card" | "bank",
     title: string,
     amount: number
   ): JSX.Element {

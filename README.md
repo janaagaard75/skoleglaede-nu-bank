@@ -19,9 +19,9 @@ Start the local server. This will give you a QR code that you can scan using the
 
 ## Known and Unknown Packages
 
-Known package: expo-barcode-scanner, expo-secure-store, expo-permissions, react-native-screens, react-native-gesture-handler, react-native, react, typescript, @types/react, babel-preset-expo, @types/react-native, expo.
+Known package: @expo/vector-icons, expo-barcode-scanner, expo-secure-store, expo-permissions, react-native-screens, react-native-gesture-handler, react-native, react, typescript, @types/react, babel-preset-expo, @types/react-native, expo.
 
-Unknown packages: react-native-iphone-x-helper, react-navigation, tslib, @types/expo\_\_vector-icons, @types/react-navigation, @typescript-eslint/eslint-plugin, @typescript-eslint/parser, eslint, eslint-config-prettier, eslint-plugin-prettier, eslint-plugin-react, expo-cli, prettier.
+Unknown packages: react-native-iphone-x-helper, react-navigation, tslib, @types/react-navigation, @typescript-eslint/eslint-plugin, @typescript-eslint/parser, eslint, eslint-config-prettier, eslint-plugin-prettier, eslint-plugin-react, expo-cli, prettier.
 
 ## To Do
 

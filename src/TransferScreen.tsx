@@ -78,7 +78,11 @@ export class TransferScreen extends Component<Props, State> {
             width: "100%",
           }}
         >
-          <SlideButton onTrigger={() => this.transfer()} title="Overfør" />
+          <SlideButton
+            disabled={this.state.selectedTransfer === TransferAmount.None}
+            onTrigger={() => this.transfer()}
+            title="Overfør"
+          />
         </View>
       </View>
     );

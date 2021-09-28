@@ -4,7 +4,7 @@
     "description": "Virtual wallet for a game about private economy created by Skoleglæde.nu.",
     "slug": "skoleglaede-nu-bank",
     "privacy": "public",
-    "version": "1.0.3",
+    "version": "1.1.0",
     "orientation": "portrait",
     "primaryColor": "#fff",
     "icon": "./assets/app-icon.png",
@@ -17,7 +17,7 @@
       "package": "nu.skoleglaede.bank"
     },
     "ios": {
-      "buildNumber": "1.0.3",
+      "buildNumber": "1.1.0",
       "bundleIdentifier": "nu.skoleglaede.bank",
       "infoPlist": {
         "NSCameraUsageDescription": "This app uses the camera to scan QR codes. The app does not get access to your pictures."

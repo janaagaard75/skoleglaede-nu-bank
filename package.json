@@ -1,6 +1,6 @@
 {
   "name": "skoleglaede-nu-bank",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "Virtual wallet for a game about private economy created by Skoleglæde.nu.",
   "author": "Jan Aagaard <jan@aagaard.net>",
   "private": true,

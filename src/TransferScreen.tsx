@@ -1,6 +1,5 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import * as React from "react";
-import { Component } from "react";
+import React, { Component } from "react";
 import { Text, View } from "react-native";
 import { ifIphoneX } from "react-native-iphone-x-helper";
 import { HomeStackParamList } from "./App";
@@ -13,9 +12,11 @@ type Props = NativeStackScreenProps<HomeStackParamList, "ScannerScreen">;
 
 enum TransferAmount {
   None = 0,
+  Transfer100 = 100,
   Transfer200 = 200,
   Transfer500 = 500,
   Transfer1000 = 1000,
+  TransferCustom = -1,
 }
 
 interface State {
@@ -65,6 +66,7 @@ export class TransferScreen extends Component<Props, State> {
             width: "50%",
           }}
         >
+          {this.renderTransferAmount(TransferAmount.Transfer100)}
           {this.renderTransferAmount(TransferAmount.Transfer200)}
           {this.renderTransferAmount(TransferAmount.Transfer500)}
           {this.renderTransferAmount(TransferAmount.Transfer1000)}
@@ -76,7 +78,11 @@ export class TransferScreen extends Component<Props, State> {
             width: "100%",
           }}
         >
-          <SlideButton onTrigger={() => this.transfer()} title="Overfør" />
+          <SlideButton
+            disabled={this.state.selectedTransfer === TransferAmount.None}
+            onTrigger={() => this.transfer()}
+            title="Overfør"
+          />
         </View>
       </View>
     );

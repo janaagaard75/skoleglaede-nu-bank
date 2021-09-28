@@ -1,6 +1,6 @@
 {
   "name": "skoleglaede-nu-bank",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "Virtual wallet for a game about private economy created by Skoleglæde.nu.",
   "author": "Jan Aagaard <jan@aagaard.net>",
   "private": true,
@@ -15,6 +15,10 @@
     "publish": "expo publish",
     "start": "yarn install && expo start",
     "validate": "yarn install --frozen-lockfile && yarn run check-types && yarn run lint"
+  },
+  "engines": {
+    "node": ">=14.0.0",
+    "yarn": ">=1.22"
   },
   "dependencies": {
     "@expo/vector-icons": "^12.0.5",

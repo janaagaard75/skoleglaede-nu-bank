@@ -1,6 +1,5 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { BarCodeScannedCallback, BarCodeScanner } from "expo-barcode-scanner";
-import * as Permissions from "expo-permissions";
 import * as React from "react";
 import { Component } from "react";
 import { Dimensions, Text, View } from "react-native";
@@ -39,7 +38,7 @@ export class ScannerScreen extends Component<Props, State> {
   }
 
   public async componentDidMount() {
-    const { status } = await Permissions.askAsync(Permissions.CAMERA);
+    const { status } = await BarCodeScanner.requestPermissionsAsync();
     this.setState({
       cameraPermission:
         status === "granted"

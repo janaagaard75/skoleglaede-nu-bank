@@ -1,4 +1,4 @@
-# Wallet for Skoleglæde.nu
+# Skoleglæde.nu Bank
 
 Wallet with virtual money for [Skoleglæde.nu](https://skoleglæde.nu/).
 

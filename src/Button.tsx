@@ -10,7 +10,7 @@ interface Props {
 }
 
 export const Button = (props: Props) => {
-  const onPress = () => {
+  const handlePress = () => {
     if (props.disabled) {
       return;
     }
@@ -21,7 +21,7 @@ export const Button = (props: Props) => {
   return (
     <TouchableOpacity
       disabled={props.disabled}
-      onPress={() => onPress()}
+      onPress={() => handlePress()}
       style={{
         alignItems: "center",
         backgroundColor: props.selected ? "#bbb" : "transparent",

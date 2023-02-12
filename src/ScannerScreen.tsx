@@ -1,6 +1,6 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { BarCodeScannedCallback, BarCodeScanner } from "expo-barcode-scanner";
-import React, { Component } from "react";
+import { Component } from "react";
 import { Dimensions, Text, View } from "react-native";
 import { ifIphoneX } from "react-native-iphone-x-helper";
 import { Action } from "./actions/Action";

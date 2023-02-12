@@ -3,6 +3,7 @@ module.exports = {
   extends: [
     "eslint:recommended",
     "plugin:react/recommended",
+    "plugin:react/jsx-runtime",
     "plugin:@typescript-eslint/recommended",
     "prettier",
   ],
@@ -11,8 +12,10 @@ module.exports = {
       jsx: true,
     },
     ecmaVersion: 2020,
+    project: "./tsconfig.json",
     sourceType: "module",
   },
+  ignorePatterns: ["**/*.js"],
   settings: {
     react: {
       version: "detect",
@@ -38,11 +41,33 @@ module.exports = {
     // Allow empty interfaces, since a lot of components don't require props.
     "@typescript-eslint/no-empty-interface": "off",
 
-    // Let the TypeScript compiler check for unused.
-    "@typescript-eslint/no-unused-vars": "off",
+    // Only allow unused variables that are prefixed with an underscore. Use an ESLint rule instead of TypeScript's noUnusedLocals and noUnusedParameters to allow unused items when developing
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      {
+        args: "all",
+        argsIgnorePattern: "^_",
+        vars: "all",
+        varsIgnorePattern: "^_",
+      },
+    ],
 
     // var-require is used when importing assets.
     "@typescript-eslint/no-var-requires": "off",
+
+    // Require explicit boolean expressions to avoid the ambiguities that JavaScript has, https://dorey.github.io/JavaScript-Equality-Table/#if-statement.
+    "@typescript-eslint/strict-boolean-expressions": [
+      "warn",
+      {
+        allowString: false,
+        allowNumber: false,
+        allowNullableObject: false,
+        allowNullableBoolean: false,
+        allowNullableString: false,
+        allowNullableNumber: false,
+        allowAny: false,
+      },
+    ],
 
     // Always use strict comparisons.
     eqeqeq: "error",

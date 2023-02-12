@@ -1,6 +1,6 @@
 import { FontAwesome } from "@expo/vector-icons";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import React, { Component } from "react";
+import { Component } from "react";
 import { Dimensions, Text, View } from "react-native";
 import { ifIphoneX } from "react-native-iphone-x-helper";
 import { HomeStackParamList } from "./App";
@@ -63,8 +63,18 @@ export class HomeScreen extends Component<Props, State> {
             flex: 1,
           }}
         />
-        {this.renderAccount("credit-card", "Konto", this.state.credit)}
-        {this.renderAccount("bank", "Opsparing", this.state.savings)}
+        <Account
+          amount={this.state.credit}
+          icon="credit-card"
+          title="Konto"
+          windowWidth={this.state.windowWidth}
+        />
+        <Account
+          amount={this.state.savings}
+          icon="bank"
+          title="Opsparing"
+          windowWidth={this.state.windowWidth}
+        />
         <View
           style={{
             flex: 1,
@@ -109,53 +119,52 @@ export class HomeScreen extends Component<Props, State> {
       </View>
     );
   }
+}
 
-  private renderAccount(
-    icon: "credit-card" | "bank",
-    title: string,
-    amount: number
-  ): JSX.Element {
-    return (
-      <View
+const Account = (props: {
+  amount: number;
+  icon: "credit-card" | "bank";
+  title: string;
+  windowWidth: number;
+}) => (
+  <View
+    style={{
+      flex: 1,
+      justifyContent: "center",
+    }}
+  >
+    <View
+      style={{
+        alignItems: "center",
+        flexDirection: "row",
+        justifyContent: "center",
+      }}
+    >
+      <FontAwesome
         style={{
-          flex: 1,
-          justifyContent: "center",
+          fontSize: 0.05 * props.windowWidth,
+          marginRight: 5,
+          width: 24,
+        }}
+        name={props.icon}
+      />
+      <Text
+        style={{
+          alignSelf: "center",
+          fontSize: 0.05 * props.windowWidth,
         }}
       >
-        <View
-          style={{
-            alignItems: "center",
-            flexDirection: "row",
-            justifyContent: "center",
-          }}
-        >
-          <FontAwesome
-            style={{
-              fontSize: 0.05 * this.state.windowWidth,
-              marginRight: 5,
-              width: 24,
-            }}
-            name={icon}
-          />
-          <Text
-            style={{
-              alignSelf: "center",
-              fontSize: 0.05 * this.state.windowWidth,
-            }}
-          >
-            {title}
-          </Text>
-        </View>
-        <Text
-          style={{
-            alignSelf: "center",
-            fontSize: 0.13 * this.state.windowWidth,
-            paddingRight: 10,
-          }}
-        >
-          {Formatter.formatAsCurrency(amount)}
-        </Text>
-      </View>
-    );
-  }
-}
+        {props.title}
+      </Text>
+    </View>
+    <Text
+      style={{
+        alignSelf: "center",
+        fontSize: 0.13 * props.windowWidth,
+        paddingRight: 10,
+      }}
+    >
+      {Formatter.formatAsCurrency(props.amount)}
+    </Text>
+  </View>
+);

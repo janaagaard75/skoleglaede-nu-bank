@@ -32,6 +32,11 @@ export class TransferScreen extends Component<Props, State> {
     };
   }
 
+  private transfer() {
+    Wallet.transferToSavings(this.state.selectedTransfer);
+    this.props.navigation.goBack();
+  }
+
   public render() {
     return (
       <View
@@ -118,11 +123,6 @@ export class TransferScreen extends Component<Props, State> {
         </View>
       </View>
     );
-  }
-
-  private transfer() {
-    Wallet.transferToSavings(this.state.selectedTransfer);
-    this.props.navigation.goBack();
   }
 }
 

@@ -48,7 +48,7 @@
   resolved "https://registry.yarnpkg.com/@babel/compat-data/-/compat-data-7.20.14.tgz#4106fc8b755f3e3ee0a0a7c27dde5de1d2b2baf8"
   integrity sha512-0YpKHD6ImkWMEINCyDAD0HLLUH/lPCefG8ld9it8DJB2wnApraKuhgYTvTY1z7UFIfBTGy5LwncZ+5HWWGbhFw==
 
-"@babel/core@^7.13.16", "@babel/core@^7.14.0", "@babel/core@^7.16.0", "@babel/core@^7.19.3":
+"@babel/core@^7.13.16", "@babel/core@^7.14.0", "@babel/core@^7.16.0", "@babel/core@^7.20.12":
   version "7.20.12"
   resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.20.12.tgz#7930db57443c6714ad216953d1356dac0eb8496d"
   integrity sha512-XsMfHovsUYHFMdrIHkZphTN/2Hzzi78R08NuHfDBehym2VsPDL6Zn/JAD/JQdnRvbSsbQc4mVaU1m6JgtTEElg==
@@ -2871,7 +2871,7 @@
   resolved "https://registry.yarnpkg.com/@types/range-parser/-/range-parser-1.2.4.tgz#cd667bcfdd025213aafb7ca5915a932590acdcdc"
   integrity sha512-EEhsLsD6UsDM1yFhAvy0Cjr6VwmpMWqFBCb9w07wVugF7w9nfajxLuVmngTIpgS6svCnm6Vaw+MZhoDCKnOfsw==
 
-"@types/react-native@~0.70.6":
+"@types/react-native@~0.70.10":
   version "0.70.10"
   resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.70.10.tgz#494576e0dc20aa319003f0cdd99192124d64038d"
   integrity sha512-m9B9hJk1w/c04zj5PCYTjJNXt+1UvKtzJj4nO/BjiS4s/zmUdkLdnbLqRQCQiTA0wuvvMbrffuPdheRtYu/M1Q==
@@ -3663,7 +3663,7 @@ babel-plugin-syntax-trailing-function-commas@^7.0.0-beta.0:
   resolved "https://registry.yarnpkg.com/babel-plugin-syntax-trailing-function-commas/-/babel-plugin-syntax-trailing-function-commas-7.0.0-beta.0.tgz#aa213c1435e2bffeb6fca842287ef534ad05d5cf"
   integrity sha512-Xj9XuRuz3nTSbaTXWv3itLOcxyF4oPD8douBBmj7U9BBC6nEBYfyOJYQMf/8PJAFotC62UY5dFfIGEPr7WswzQ==
 
-babel-preset-expo@~9.2.1, babel-preset-expo@~9.2.2:
+babel-preset-expo@~9.2.2:
   version "9.2.2"
   resolved "https://registry.yarnpkg.com/babel-preset-expo/-/babel-preset-expo-9.2.2.tgz#3f3819a224bbc32cefebb5d97a40c950a2f7ae2e"
   integrity sha512-69cSPObZWFz0AaUT6IhCu2VzPVTICUtXzhX5ecoDttFe+9wb9yMV8m7rBNZptJQ3wtiKB5iEL7/wvtKygPz/mQ==
@@ -5575,7 +5575,7 @@ expo-secure-store@~12.0.0:
   resolved "https://registry.yarnpkg.com/expo-secure-store/-/expo-secure-store-12.0.0.tgz#8baec10779708965169df3aa6406a801e4201514"
   integrity sha512-Rz5lYr2NxrnFvIPwuWcseUSbdUjFxNZG0oVulqM9puuK7t5lDG3/SAy+J22ELBhaltuci2VVO6hCdFwRoRiG/Q==
 
-expo@^47.0.0:
+expo@^47.0.13:
   version "47.0.13"
   resolved "https://registry.yarnpkg.com/expo/-/expo-47.0.13.tgz#f53f82e7f9e209f8a8b25f2493f58439958368cb"
   integrity sha512-9VjjGdViCJ9NfWbUE7brkwFBDvKuA35V345vMtHFYNKoGJjXib36yitmawreMDQFv0kMTqTnzc7T2191Pod7Ng==
@@ -9455,7 +9455,7 @@ react-native-safe-area-context@4.4.1:
   resolved "https://registry.yarnpkg.com/react-native-safe-area-context/-/react-native-safe-area-context-4.4.1.tgz#239c60b8a9a80eac70a38a822b04c0f1d15ffc01"
   integrity sha512-N9XTjiuD73ZpVlejHrUWIFZc+6Z14co1K/p1IFMkImU7+avD69F3y+lhkqA2hN/+vljdZrBSiOwXPkuo43nFQA==
 
-react-native-screens@~3.18.0:
+react-native-screens@~3.18.2:
   version "3.18.2"
   resolved "https://registry.yarnpkg.com/react-native-screens/-/react-native-screens-3.18.2.tgz#d7ab2d145258d3db9fa630fa5379dc4474117866"
   integrity sha512-ANUEuvMUlsYJ1QKukEhzhfrvOUO9BVH9Nzg+6eWxpn3cfD/O83yPBOF8Mx6x5H/2+sMy+VS5x/chWOOo/U7QJw==
@@ -11010,7 +11010,7 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typescript@^4.6.3:
+typescript@^4.9.5:
   version "4.9.5"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.9.5.tgz#095979f9bcc0d09da324d58d03ce8f8374cbe65a"
   integrity sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g==

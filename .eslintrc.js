@@ -38,8 +38,16 @@ module.exports = {
     // Allow empty interfaces, since a lot of components don't require props.
     "@typescript-eslint/no-empty-interface": "off",
 
-    // Let the TypeScript compiler check for unused.
-    "@typescript-eslint/no-unused-vars": "off",
+    // Only allow unused variables that are prefixed with an underscore. Use an ESLint rule instead of TypeScript's noUnusedLocals and noUnusedParameters to allow unused items when developing
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      {
+        args: "all",
+        argsIgnorePattern: "^_",
+        vars: "all",
+        varsIgnorePattern: "^_",
+      },
+    ],
 
     // var-require is used when importing assets.
     "@typescript-eslint/no-var-requires": "off",

@@ -66,10 +66,42 @@ export class TransferScreen extends Component<Props, State> {
             width: "50%",
           }}
         >
-          {this.renderTransferAmount(TransferAmount.Transfer100)}
-          {this.renderTransferAmount(TransferAmount.Transfer200)}
-          {this.renderTransferAmount(TransferAmount.Transfer500)}
-          {this.renderTransferAmount(TransferAmount.Transfer1000)}
+          <TransferAmountButton
+            amount={TransferAmount.Transfer100}
+            onPress={() =>
+              this.setState({
+                selectedTransfer: TransferAmount.Transfer100,
+              })
+            }
+            selectedTransfer={this.state.selectedTransfer}
+          />
+          <TransferAmountButton
+            amount={TransferAmount.Transfer200}
+            onPress={() =>
+              this.setState({
+                selectedTransfer: TransferAmount.Transfer200,
+              })
+            }
+            selectedTransfer={this.state.selectedTransfer}
+          />
+          <TransferAmountButton
+            amount={TransferAmount.Transfer500}
+            onPress={() =>
+              this.setState({
+                selectedTransfer: TransferAmount.Transfer500,
+              })
+            }
+            selectedTransfer={this.state.selectedTransfer}
+          />
+          <TransferAmountButton
+            amount={TransferAmount.Transfer1000}
+            onPress={() =>
+              this.setState({
+                selectedTransfer: TransferAmount.Transfer1000,
+              })
+            }
+            selectedTransfer={this.state.selectedTransfer}
+          />
         </View>
         <View
           style={{
@@ -88,29 +120,33 @@ export class TransferScreen extends Component<Props, State> {
     );
   }
 
-  private renderTransferAmount(amount: TransferAmount) {
-    const enabled = Wallet.transferToSavingsAllowed(amount);
-
-    return (
-      <View
-        style={{
-          marginVertical: 5,
-          width: "100%",
-        }}
-      >
-        <Button
-          disabled={!enabled}
-          fontSize={16}
-          onPress={() => this.setState({ selectedTransfer: amount })}
-          selected={this.state.selectedTransfer === amount}
-          title={Formatter.formatAsCurrency(amount)}
-        />
-      </View>
-    );
-  }
-
   private transfer() {
     Wallet.transferToSavings(this.state.selectedTransfer);
     this.props.navigation.goBack();
   }
 }
+
+const TransferAmountButton = (props: {
+  amount: TransferAmount;
+  onPress: () => void;
+  selectedTransfer: TransferAmount;
+}) => {
+  const enabled = Wallet.transferToSavingsAllowed(props.amount);
+
+  return (
+    <View
+      style={{
+        marginVertical: 5,
+        width: "100%",
+      }}
+    >
+      <Button
+        disabled={!enabled}
+        fontSize={16}
+        onPress={props.onPress}
+        selected={props.selectedTransfer === props.amount}
+        title={Formatter.formatAsCurrency(props.amount)}
+      />
+    </View>
+  );
+};

@@ -11,8 +11,10 @@ module.exports = {
       jsx: true,
     },
     ecmaVersion: 2020,
+    project: "./tsconfig.json",
     sourceType: "module",
   },
+  ignorePatterns: ["**/*.js"],
   settings: {
     react: {
       version: "detect",
@@ -51,6 +53,20 @@ module.exports = {
 
     // var-require is used when importing assets.
     "@typescript-eslint/no-var-requires": "off",
+
+    // Require explicit boolean expressions to avoid the ambiguities that JavaScript has, https://dorey.github.io/JavaScript-Equality-Table/#if-statement.
+    "@typescript-eslint/strict-boolean-expressions": [
+      "warn",
+      {
+        allowString: false,
+        allowNumber: false,
+        allowNullableObject: false,
+        allowNullableBoolean: false,
+        allowNullableString: false,
+        allowNullableNumber: false,
+        allowAny: false,
+      },
+    ],
 
     // Always use strict comparisons.
     eqeqeq: "error",

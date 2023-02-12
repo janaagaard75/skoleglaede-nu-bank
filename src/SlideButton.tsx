@@ -90,7 +90,8 @@ export class SlideButton extends Component<Props, State> {
           sliderState: SliderState.DropWillCancel,
         });
       },
-      onStartShouldSetPanResponder: (_e, _gestureState) => !this.props.disabled,
+      onStartShouldSetPanResponder: (_e, _gestureState) =>
+        !(this.props.disabled !== true),
     });
   }
 
@@ -127,9 +128,9 @@ export class SlideButton extends Component<Props, State> {
             <Text
               onLayout={(layoutEvent) => this.setButtonSize(layoutEvent)}
               style={{
-                borderColor: this.props.disabled ? "#999" : "#000",
+                borderColor: this.props.disabled === true ? "#999" : "#000",
                 borderWidth: 2,
-                color: this.props.disabled ? "#999" : "#000",
+                color: this.props.disabled === true ? "#999" : "#000",
                 fontSize: 16,
                 paddingHorizontal: 8,
                 paddingVertical: 6,

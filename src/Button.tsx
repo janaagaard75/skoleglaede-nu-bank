@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Text, TouchableOpacity } from "react-native";
 
 interface Props {
@@ -9,39 +9,37 @@ interface Props {
   title: string;
 }
 
-export class Button extends Component<Props> {
-  public render() {
-    return (
-      <TouchableOpacity
-        disabled={this.props.disabled}
-        onPress={() => this.onPress()}
-        style={{
-          alignItems: "center",
-          backgroundColor: this.props.selected ? "#bbb" : "transparent",
-          borderColor: this.props.disabled ? "#999" : "#000",
-          borderWidth: 2,
-          paddingHorizontal: Math.round((this.props.fontSize / 16) * 11),
-          paddingVertical: Math.round((this.props.fontSize / 16) * 9),
-          width: "100%",
-        }}
-      >
-        <Text
-          style={{
-            color: this.props.disabled ? "#999" : "#000",
-            fontSize: this.props.fontSize,
-          }}
-        >
-          {this.props.title}
-        </Text>
-      </TouchableOpacity>
-    );
-  }
-
-  private onPress(): void {
-    if (this.props.disabled) {
+export const Button = (props: Props) => {
+  const onPress = () => {
+    if (props.disabled) {
       return;
     }
 
-    this.props.onPress();
-  }
-}
+    props.onPress();
+  };
+
+  return (
+    <TouchableOpacity
+      disabled={props.disabled}
+      onPress={() => onPress()}
+      style={{
+        alignItems: "center",
+        backgroundColor: props.selected ? "#bbb" : "transparent",
+        borderColor: props.disabled ? "#999" : "#000",
+        borderWidth: 2,
+        paddingHorizontal: Math.round((props.fontSize / 16) * 11),
+        paddingVertical: Math.round((props.fontSize / 16) * 9),
+        width: "100%",
+      }}
+    >
+      <Text
+        style={{
+          color: props.disabled ? "#999" : "#000",
+          fontSize: props.fontSize,
+        }}
+      >
+        {props.title}
+      </Text>
+    </TouchableOpacity>
+  );
+};

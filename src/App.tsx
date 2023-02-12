@@ -6,8 +6,6 @@ import { ResetScreen } from "./ResetScreen";
 import { ScannerScreen } from "./ScannerScreen";
 import { TransferScreen } from "./TransferScreen";
 
-const Stack = createNativeStackNavigator();
-
 export type HomeStackParamList = {
   HomeScreen: undefined;
   BrokeScreen: undefined;
@@ -16,9 +14,11 @@ export type HomeStackParamList = {
   TransferScreen: undefined;
 };
 
+const HomeStack = createNativeStackNavigator<HomeStackParamList>();
+
 export const App = () => (
   <NavigationContainer>
-    <Stack.Navigator
+    <HomeStack.Navigator
       initialRouteName="HomeScreen"
       screenOptions={{
         headerBackTitle: "Tilbage",
@@ -28,31 +28,31 @@ export const App = () => (
         headerTintColor: "#fff",
       }}
     >
-      <Stack.Screen
+      <HomeStack.Screen
         name="HomeScreen"
         component={HomeScreen}
         options={{ title: "Skoleglæde.nu Bank" }}
       />
-      <Stack.Screen
+      <HomeStack.Screen
         name="BrokeScreen"
         component={BrokeScreen}
         options={{ title: "Fallit" }}
       />
-      <Stack.Screen
+      <HomeStack.Screen
         name="ResetScreen"
         component={ResetScreen}
         options={{ title: "Nulstil" }}
       />
-      <Stack.Screen
+      <HomeStack.Screen
         name="ScannerScreen"
         component={ScannerScreen}
         options={{ title: "Scan QR-kode" }}
       />
-      <Stack.Screen
+      <HomeStack.Screen
         name="TransferScreen"
         component={TransferScreen}
         options={{ title: "Overfør" }}
       />
-    </Stack.Navigator>
+    </HomeStack.Navigator>
   </NavigationContainer>
 );

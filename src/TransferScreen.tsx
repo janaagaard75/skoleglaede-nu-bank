@@ -61,23 +61,27 @@ export const TransferScreen = (props: Props) => {
       >
         <TransferAmountButton
           amount={TransferAmount.Transfer100}
+          enabled={Wallet.transferToSavingsAllowed(TransferAmount.Transfer100)}
           onPress={() => setSelectedTransfer(TransferAmount.Transfer100)}
-          selectedTransfer={selectedTransfer}
+          selected={selectedTransfer === TransferAmount.Transfer100}
         />
         <TransferAmountButton
           amount={TransferAmount.Transfer200}
+          enabled={Wallet.transferToSavingsAllowed(TransferAmount.Transfer200)}
           onPress={() => setSelectedTransfer(TransferAmount.Transfer200)}
-          selectedTransfer={selectedTransfer}
+          selected={selectedTransfer === TransferAmount.Transfer200}
         />
         <TransferAmountButton
           amount={TransferAmount.Transfer500}
+          enabled={Wallet.transferToSavingsAllowed(TransferAmount.Transfer500)}
           onPress={() => setSelectedTransfer(TransferAmount.Transfer500)}
-          selectedTransfer={selectedTransfer}
+          selected={selectedTransfer === TransferAmount.Transfer500}
         />
         <TransferAmountButton
           amount={TransferAmount.Transfer1000}
+          enabled={Wallet.transferToSavingsAllowed(TransferAmount.Transfer1000)}
           onPress={() => setSelectedTransfer(TransferAmount.Transfer1000)}
-          selectedTransfer={selectedTransfer}
+          selected={selectedTransfer === TransferAmount.Transfer1000}
         />
       </View>
       <View
@@ -99,25 +103,22 @@ export const TransferScreen = (props: Props) => {
 
 const TransferAmountButton = (props: {
   amount: TransferAmount;
+  enabled: boolean;
   onPress: () => void;
-  selectedTransfer: TransferAmount;
-}) => {
-  const enabled = Wallet.transferToSavingsAllowed(props.amount);
-
-  return (
-    <View
-      style={{
-        marginVertical: 5,
-        width: "100%",
-      }}
-    >
-      <Button
-        disabled={!enabled}
-        fontSize={16}
-        onPress={props.onPress}
-        selected={props.selectedTransfer === props.amount}
-        title={Formatter.formatAsCurrency(props.amount)}
-      />
-    </View>
-  );
-};
+  selected: boolean;
+}) => (
+  <View
+    style={{
+      marginVertical: 5,
+      width: "100%",
+    }}
+  >
+    <Button
+      disabled={!props.enabled}
+      fontSize={16}
+      onPress={props.onPress}
+      selected={props.selected}
+      title={Formatter.formatAsCurrency(props.amount)}
+    />
+  </View>
+);

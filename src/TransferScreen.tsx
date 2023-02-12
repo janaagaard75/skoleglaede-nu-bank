@@ -8,7 +8,7 @@ import { Formatter } from "./Formatter";
 import { SlideButton } from "./SlideButton";
 import { Wallet } from "./Wallet";
 
-type Props = NativeStackScreenProps<HomeStackParamList, "ScannerScreen">;
+type Props = NativeStackScreenProps<HomeStackParamList, "TransferScreen">;
 
 enum TransferAmount {
   None = 0,

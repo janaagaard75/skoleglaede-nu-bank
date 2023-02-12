@@ -6,8 +6,6 @@ import { ResetScreen } from "./ResetScreen";
 import { ScannerScreen } from "./ScannerScreen";
 import { TransferScreen } from "./TransferScreen";
 
-const HomeStack = createNativeStackNavigator<HomeStackParamList>();
-
 export type HomeStackParamList = {
   HomeScreen: undefined;
   BrokeScreen: undefined;
@@ -15,6 +13,8 @@ export type HomeStackParamList = {
   ScannerScreen: undefined;
   TransferScreen: undefined;
 };
+
+const HomeStack = createNativeStackNavigator<HomeStackParamList>();
 
 export const App = () => (
   <NavigationContainer>

@@ -59,30 +59,22 @@ export const TransferScreen = (props: Props) => {
           width: "50%",
         }}
       >
-        <TransferAmountButton
-          amount={TransferAmount.Transfer100}
-          enabled={Wallet.transferToSavingsAllowed(TransferAmount.Transfer100)}
-          onPress={() => setSelectedTransfer(TransferAmount.Transfer100)}
-          selected={selectedTransfer === TransferAmount.Transfer100}
-        />
-        <TransferAmountButton
-          amount={TransferAmount.Transfer200}
-          enabled={Wallet.transferToSavingsAllowed(TransferAmount.Transfer200)}
-          onPress={() => setSelectedTransfer(TransferAmount.Transfer200)}
-          selected={selectedTransfer === TransferAmount.Transfer200}
-        />
-        <TransferAmountButton
-          amount={TransferAmount.Transfer500}
-          enabled={Wallet.transferToSavingsAllowed(TransferAmount.Transfer500)}
-          onPress={() => setSelectedTransfer(TransferAmount.Transfer500)}
-          selected={selectedTransfer === TransferAmount.Transfer500}
-        />
-        <TransferAmountButton
-          amount={TransferAmount.Transfer1000}
-          enabled={Wallet.transferToSavingsAllowed(TransferAmount.Transfer1000)}
-          onPress={() => setSelectedTransfer(TransferAmount.Transfer1000)}
-          selected={selectedTransfer === TransferAmount.Transfer1000}
-        />
+        {[
+          TransferAmount.Transfer100,
+          TransferAmount.Transfer200,
+          TransferAmount.Transfer500,
+          TransferAmount.Transfer1000,
+        ].map((amount) => (
+          <TransferAmountButton
+            amount={amount}
+            enabled={Wallet.transferToSavingsAllowed(amount)}
+            key={amount}
+            onPress={() => {
+              setSelectedTransfer(amount);
+            }}
+            selected={selectedTransfer === amount}
+          />
+        ))}
       </View>
       <View
         style={{

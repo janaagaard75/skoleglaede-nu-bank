@@ -21,7 +21,7 @@ export const Button = (props: Props) => {
   return (
     <TouchableOpacity
       disabled={props.disabled}
-      onPress={() => handlePress()}
+      onPress={handlePress}
       style={{
         alignItems: "center",
         backgroundColor: props.selected ? "#bbb" : "transparent",

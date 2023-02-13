@@ -25,7 +25,7 @@ interface State {
 }
 
 export class ScannerScreen extends Component<Props, State> {
-  constructor(props: Props) {
+  public constructor(props: Props) {
     super(props);
 
     this.state = {
@@ -110,7 +110,9 @@ export class ScannerScreen extends Component<Props, State> {
           }}
         >
           <SlideButton
-            onTrigger={() => this.okButtonPressed()}
+            onTrigger={() => {
+              this.okButtonPressed();
+            }}
             disabled={this.state.currentAction === undefined}
             title="Bekræft"
           />

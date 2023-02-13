@@ -30,7 +30,7 @@ interface State {
 }
 
 export class SlideButton extends Component<Props, State> {
-  constructor(props: Props) {
+  public constructor(props: Props) {
     super(props);
 
     this.state = {
@@ -115,7 +115,9 @@ export class SlideButton extends Component<Props, State> {
         }}
       >
         <View
-          onLayout={(layoutEvent) => this.setSliderSize(layoutEvent)}
+          onLayout={(layoutEvent) => {
+            this.setSliderSize(layoutEvent);
+          }}
           style={{
             alignItems: "flex-start",
             borderColor: "#000",
@@ -126,7 +128,9 @@ export class SlideButton extends Component<Props, State> {
             {...this.panResponder.panHandlers}
           >
             <Text
-              onLayout={(layoutEvent) => this.setButtonSize(layoutEvent)}
+              onLayout={(layoutEvent) => {
+                this.setButtonSize(layoutEvent);
+              }}
               style={{
                 borderColor: this.props.disabled === true ? "#999" : "#000",
                 borderWidth: 2,

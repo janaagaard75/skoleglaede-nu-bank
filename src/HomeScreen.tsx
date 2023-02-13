@@ -17,7 +17,7 @@ interface State {
 }
 
 export class HomeScreen extends Component<Props, State> {
-  constructor(props: Props) {
+  public constructor(props: Props) {
     super(props);
 
     this.state = {
@@ -53,7 +53,9 @@ export class HomeScreen extends Component<Props, State> {
           }}
         >
           <Button
-            onPress={() => this.props.navigation.navigate("ResetScreen")}
+            onPress={() => {
+              this.props.navigation.navigate("ResetScreen");
+            }}
             fontSize={13}
             title="Nulstil"
           />
@@ -87,7 +89,9 @@ export class HomeScreen extends Component<Props, State> {
           }}
         >
           <Button
-            onPress={() => this.props.navigation.navigate("BrokeScreen")}
+            onPress={() => {
+              this.props.navigation.navigate("BrokeScreen");
+            }}
             fontSize={16}
             title="Fallit"
           />
@@ -99,7 +103,9 @@ export class HomeScreen extends Component<Props, State> {
           }}
         >
           <Button
-            onPress={() => this.props.navigation.navigate("TransferScreen")}
+            onPress={() => {
+              this.props.navigation.navigate("TransferScreen");
+            }}
             fontSize={16}
             title="Overfør til opsparing"
           />
@@ -111,7 +117,9 @@ export class HomeScreen extends Component<Props, State> {
           }}
         >
           <Button
-            onPress={() => this.props.navigation.navigate("ScannerScreen")}
+            onPress={() => {
+              this.props.navigation.navigate("ScannerScreen");
+            }}
             fontSize={16}
             title="Scan QR-kode"
           />

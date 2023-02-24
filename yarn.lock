@@ -1628,10 +1628,10 @@
     remove-trailing-slash "^0.1.0"
     uuid "^8.3.2"
 
-"@expo/schemer@1.4.4":
-  version "1.4.4"
-  resolved "https://registry.yarnpkg.com/@expo/schemer/-/schemer-1.4.4.tgz#f47a2418b6bb3f02044ec2a04f82357c723597b7"
-  integrity sha512-cZo7hhjuEpOl5qf8nidZPlusRX4GXWRh24pOkM6LP2FGLMNdfazcJj1TU6h3h9FY5G6xLfGxpDhF/JETL9Qj+A==
+"@expo/schemer@1.4.5":
+  version "1.4.5"
+  resolved "https://registry.yarnpkg.com/@expo/schemer/-/schemer-1.4.5.tgz#ea466b7793be60af02e429325842d0db150a26e6"
+  integrity sha512-i96A2GaZWLE7K1McRt8Vf7vsMKzzM/1t+xUXOTdBEiGH2ffiJjU69ufbTI0OwjLFCUCzPI2LzXwAHVnSP+Rkog==
   dependencies:
     ajv "^8.1.0"
     ajv-formats "^2.0.2"
@@ -4831,10 +4831,10 @@ expo-barcode-scanner@~12.1.0:
   dependencies:
     expo-image-loader "~4.0.0"
 
-expo-cli@^6.3.0:
-  version "6.3.0"
-  resolved "https://registry.yarnpkg.com/expo-cli/-/expo-cli-6.3.0.tgz#3c1b3f90a3a2598c9e42636368953eb875d5b4a5"
-  integrity sha512-cQi+KPmPiZu72Kp+RWyQA9f7gKi2ygLjLh3tQeI1A6eDrJHUwnuGhcqEjoYfYBt9+MLYth08cCZqJuFJVm5ExA==
+expo-cli@^6.3.2:
+  version "6.3.2"
+  resolved "https://registry.yarnpkg.com/expo-cli/-/expo-cli-6.3.2.tgz#42dd7a31f5f4534e04b86dfc4493480755277727"
+  integrity sha512-Jq3SmCPpevcPEaQ4fHw10RVJfDuBrBGVA93gJxFWCPMaYh8jqBYtSuvH527mT8FoDu5VxYdYXULTqQz5kfVeHQ==
   dependencies:
     "@babel/runtime" "7.9.0"
     "@expo/apple-utils" "0.0.0-alpha.37"
@@ -4891,7 +4891,7 @@ expo-cli@^6.3.0:
     url-join "4.0.0"
     uuid "^8.0.0"
     wrap-ansi "^7.0.0"
-    xdl "60.0.2"
+    xdl "60.0.4"
 
 expo-constants@~14.0.0, expo-constants@~14.0.2:
   version "14.0.2"
@@ -10749,10 +10749,10 @@ xcode@^3.0.1:
     simple-plist "^1.1.0"
     uuid "^7.0.3"
 
-xdl@60.0.2:
-  version "60.0.2"
-  resolved "https://registry.yarnpkg.com/xdl/-/xdl-60.0.2.tgz#cd3f278cf7a40aedab524ca772bbbc8d236be302"
-  integrity sha512-P0k/+BGvdDZu73AW9yxmZ4Fv+A0yZpbDXg4YsmBvbVeWWPA64i3mFH/Zm23IZ3ZqYexHS+Vuxb2ASEayhM8B7Q==
+xdl@60.0.4:
+  version "60.0.4"
+  resolved "https://registry.yarnpkg.com/xdl/-/xdl-60.0.4.tgz#7b75e6212225225ed962206bdf50f6383f921403"
+  integrity sha512-xyvJj4ATdu8hdBwA1Q/71LjfHS9jKEpj63qPe9hGvhIAaKX3mYaMFpC44XySZ2PJ9YeCMM7VRRjyEdiUSoUDjQ==
   dependencies:
     "@expo/bunyan" "4.0.0"
     "@expo/config" "6.0.24"
@@ -10764,7 +10764,7 @@ xdl@60.0.2:
     "@expo/package-manager" "0.0.56"
     "@expo/plist" "0.0.20"
     "@expo/rudder-sdk-node" "1.1.1"
-    "@expo/schemer" "1.4.4"
+    "@expo/schemer" "1.4.5"
     "@expo/sdk-runtime-versions" "^1.0.0"
     "@expo/spawn-async" "1.5.0"
     "@expo/webpack-config" "18.0.1"

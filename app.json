@@ -14,11 +14,9 @@
       "resizeMode": "contain"
     },
     "android": {
-      "package": "nu.skoleglaede.bank",
-      "versionCode": "1.2.0"
+      "package": "nu.skoleglaede.bank"
     },
     "ios": {
-      "buildNumber": "1.2.0",
       "bundleIdentifier": "nu.skoleglaede.bank",
       "infoPlist": {
         "NSCameraUsageDescription": "This app uses the camera to scan QR codes. The app does not get access to your pictures."

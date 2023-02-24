@@ -14,6 +14,7 @@
     "optimize-assets": "expo optimize",
     "publish": "expo publish",
     "start": "yarn install && expo start",
+    "update-dependencies": "yarn upgrade && npx syncyarnlock -k -s && yarn install",
     "validate": "yarn install --frozen-lockfile && yarn run check-types && yarn run lint"
   },
   "engines": {

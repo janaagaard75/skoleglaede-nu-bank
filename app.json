@@ -28,6 +28,11 @@
     "locales": {
       "da": "./da.json"
     },
-    "githubUrl": "https://github.com/janaagaard75/skoleglaede-nu-bank"
+    "githubUrl": "https://github.com/janaagaard75/skoleglaede-nu-bank",
+    "extra": {
+      "eas": {
+        "projectId": "05295410-15d6-11e9-8b84-313f96953860"
+      }
+    }
   }
 }

@@ -8,6 +8,7 @@
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "android": "yarn run start --android",
+    "build": "eas build --platform all",
     "check-types": "tsc",
     "ios": "yarn run start --ios",
     "lint": "eslint --format unix \"**/*.ts\" \"**/*.tsx\"",

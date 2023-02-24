@@ -7,14 +7,12 @@
   "license": "MIT",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "android": "yarn run start --android",
     "build": "eas build --platform all",
     "check-types": "tsc",
-    "ios": "yarn run start --ios",
     "lint": "eslint --format unix \"**/*.ts\" \"**/*.tsx\"",
     "optimize-assets": "expo optimize",
     "publish": "expo publish",
-    "start": "yarn install && expo start",
+    "start": "yarn install && expo start --ios",
     "update-dependencies": "yarn upgrade && npx syncyarnlock -k -s && yarn install",
     "validate": "yarn install --frozen-lockfile && yarn run check-types && yarn run lint"
   },

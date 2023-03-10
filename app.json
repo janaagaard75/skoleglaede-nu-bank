@@ -4,7 +4,7 @@
     "description": "Virtual wallet for a game about private economy created by Skoleglæde.nu.",
     "slug": "skoleglaede-nu-bank",
     "privacy": "public",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "orientation": "portrait",
     "primaryColor": "#fff",
     "icon": "./assets/app-icon.png",

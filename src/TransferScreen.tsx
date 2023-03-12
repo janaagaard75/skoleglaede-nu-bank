@@ -4,7 +4,7 @@ import { Text, View } from "react-native";
 import { ifIphoneX } from "react-native-iphone-x-helper";
 import { HomeStackParamList } from "./App";
 import { Button } from "./Button";
-import { Formatter } from "./Formatter";
+import { formatAsCurrency } from "./Formatter";
 import { SlideButton } from "./SlideButton";
 
 type Props = NativeStackScreenProps<HomeStackParamList, "TransferScreen"> & {
@@ -51,10 +51,10 @@ export const TransferScreen = (props: Props) => {
           Vælg hvor mange penge du vil overføre fra din konto til din opsparing.
         </Text>
         <Text style={{ marginTop: 15 }}>
-          Konto: {Formatter.formatAsCurrency(props.credit)}
+          Konto: {formatAsCurrency(props.credit)}
         </Text>
         <Text style={{ marginTop: 5 }}>
-          Opsparing: {Formatter.formatAsCurrency(props.savings)}
+          Opsparing: {formatAsCurrency(props.savings)}
         </Text>
       </View>
       <View
@@ -117,7 +117,7 @@ const TransferAmountButton = (props: {
       fontSize={16}
       onPress={props.onPress}
       selected={props.selected}
-      title={Formatter.formatAsCurrency(props.amount)}
+      title={formatAsCurrency(props.amount)}
     />
   </View>
 );

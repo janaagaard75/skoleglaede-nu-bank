@@ -1,6 +1,6 @@
 import { FontAwesome } from "@expo/vector-icons";
 import { Text, View } from "react-native";
-import { Formatter } from "./Formatter";
+import { formatAsCurrency } from "./Formatter";
 
 export const Account = (props: {
   amount: number;
@@ -45,7 +45,7 @@ export const Account = (props: {
         paddingRight: 10,
       }}
     >
-      {Formatter.formatAsCurrency(props.amount)}
+      {formatAsCurrency(props.amount)}
     </Text>
   </View>
 );

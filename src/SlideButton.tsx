@@ -1,20 +1,12 @@
-import { Component } from "react";
+import { useRef, useState } from "react";
 import {
   Animated,
   Easing,
-  LayoutChangeEvent,
   LayoutRectangle,
   PanResponder,
-  PanResponderInstance,
   Text,
   View,
 } from "react-native";
-
-interface Props {
-  disabled?: boolean;
-  onTrigger: () => void;
-  title: string;
-}
 
 enum SliderState {
   Animating,
@@ -23,152 +15,145 @@ enum SliderState {
   Idle,
 }
 
-interface State {
-  buttonSize: LayoutRectangle | undefined;
-  sliderSize: LayoutRectangle | undefined;
-  sliderState: SliderState;
+interface Props {
+  disabled?: boolean;
+  onTrigger: () => void;
+  title: string;
 }
 
-export class SlideButton extends Component<Props, State> {
-  public constructor(props: Props) {
-    super(props);
+export const SlideButton = (props: Props) => {
+  const [sliderState, setSliderState] = useState<SliderState>(SliderState.Idle);
+  const [buttonSize, setButtonSize] = useState<LayoutRectangle | undefined>(
+    undefined
+  );
+  const [sliderSize, setSliderSize] = useState<LayoutRectangle | undefined>(
+    undefined
+  );
 
-    this.state = {
-      buttonSize: undefined,
-      sliderSize: undefined,
-      sliderState: SliderState.Idle,
-    };
+  const sliderStateRef = useRef<SliderState>(SliderState.Idle);
+  sliderStateRef.current = sliderState;
+  const buttonSizeRef = useRef<LayoutRectangle | undefined>(undefined);
+  buttonSizeRef.current = buttonSize;
+  const sliderSizeRef = useRef<LayoutRectangle | undefined>(undefined);
+  sliderSizeRef.current = sliderSize;
 
-    this.animatedPosition = new Animated.Value(0);
+  const animatedPosition = useRef(new Animated.Value(0)).current;
 
-    this.panResponder = PanResponder.create({
-      onPanResponderEnd: (_e, _gestureState) => {
-        if (this.state.sliderState === SliderState.DropWillTriggerAction) {
-          this.props.onTrigger();
+  const panResponder = useRef(
+    PanResponder.create({
+      onPanResponderEnd: (_evt, _gestureState) => {
+        if (sliderStateRef.current === SliderState.DropWillTriggerAction) {
+          props.onTrigger();
         }
 
-        this.setState({
-          sliderState: SliderState.Animating,
-        });
+        setSliderState(SliderState.Animating);
 
-        Animated.timing(this.animatedPosition, {
+        Animated.timing(animatedPosition, {
           duration: 100,
           easing: Easing.ease,
           toValue: 0,
           useNativeDriver: true,
         }).start(() => {
-          if (this.state.sliderState !== SliderState.DropWillCancel) {
-            this.setState({
-              sliderState: SliderState.Idle,
-            });
+          if (sliderStateRef.current !== SliderState.DropWillCancel) {
+            setSliderState(SliderState.Idle);
           }
         });
       },
-      onPanResponderMove: (_e, gestureEvent) => {
+
+      onPanResponderMove: (_evt, gestureState) => {
         if (
-          this.state.buttonSize === undefined ||
-          this.state.sliderSize === undefined
+          buttonSizeRef.current === undefined ||
+          sliderSizeRef.current === undefined
         ) {
           throw new Error("Both buttonSize and sliderSize must be defined.");
         }
 
         const maximumDx =
-          this.state.sliderSize.width - this.state.buttonSize.width;
-        const restrictedDx = this.restrict(gestureEvent.dx, 0, maximumDx);
+          sliderSizeRef.current.width - buttonSizeRef.current.width;
+        const restrictedDx = restrict(gestureState.dx, 0, maximumDx);
         const dropZoneWidth = 20;
         const withinDropZone = maximumDx - restrictedDx <= dropZoneWidth;
-        this.setState({
-          sliderState: withinDropZone
+        setSliderState(
+          withinDropZone
             ? SliderState.DropWillTriggerAction
-            : SliderState.DropWillCancel,
-        });
+            : SliderState.DropWillCancel
+        );
 
-        this.animatedPosition.setValue(restrictedDx);
+        animatedPosition.setValue(restrictedDx);
       },
-      onPanResponderStart: (_e, _gestureState) => {
-        this.setState({
-          sliderState: SliderState.DropWillCancel,
-        });
+
+      onPanResponderStart: (_evt, _gestureState) => {
+        setSliderState(SliderState.DropWillCancel);
       },
-      onStartShouldSetPanResponder: (_e, _gestureState) =>
-        !(this.props.disabled !== true),
-    });
-  }
 
-  private animatedPosition: Animated.Value;
-  private panResponder: PanResponderInstance;
+      onStartShouldSetPanResponder: (_evt, _gestureState) =>
+        !(props.disabled !== true),
 
-  public render() {
-    const animatedViewStyle = {
-      transform: [
-        {
-          translateX: this.animatedPosition,
-        },
-      ],
-    };
+      onMoveShouldSetPanResponder: (_evt, _gestureState) => true,
+      onMoveShouldSetPanResponderCapture: (_evt, _gestureState) => true,
+      onPanResponderTerminationRequest: (_evt, _gestureState) => true,
+      onShouldBlockNativeResponder: (_evt, _gestureState) => true,
+      onStartShouldSetPanResponderCapture: (_evt, _gestureState) => true,
+    })
+  ).current;
 
-    return (
+  return (
+    <View
+      style={{
+        borderWidth: 2,
+        padding: 3,
+      }}
+    >
       <View
+        onLayout={(layoutEvent) => {
+          console.log("setSliderSize");
+          setSliderSize(layoutEvent.nativeEvent.layout);
+        }}
         style={{
-          borderWidth: 2,
-          padding: 3,
+          alignItems: "flex-start",
+          borderColor: "#000",
         }}
       >
-        <View
-          onLayout={(layoutEvent) => {
-            this.setSliderSize(layoutEvent);
-          }}
+        <Animated.View
           style={{
-            alignItems: "flex-start",
-            borderColor: "#000",
+            transform: [
+              {
+                translateX: animatedPosition,
+              },
+            ],
           }}
+          {...panResponder.panHandlers}
         >
-          <Animated.View
-            style={animatedViewStyle}
-            {...this.panResponder.panHandlers}
+          <Text
+            onLayout={(layoutEvent) => {
+              console.log("setButtonSize");
+              setButtonSize(layoutEvent.nativeEvent.layout);
+            }}
+            style={{
+              borderColor: props.disabled === true ? "#999" : "#000",
+              borderWidth: 2,
+              color: props.disabled === true ? "#999" : "#000",
+              fontSize: 16,
+              paddingHorizontal: 8,
+              paddingVertical: 6,
+            }}
           >
-            <Text
-              onLayout={(layoutEvent) => {
-                this.setButtonSize(layoutEvent);
-              }}
-              style={{
-                borderColor: this.props.disabled === true ? "#999" : "#000",
-                borderWidth: 2,
-                color: this.props.disabled === true ? "#999" : "#000",
-                fontSize: 16,
-                paddingHorizontal: 8,
-                paddingVertical: 6,
-              }}
-            >
-              {this.props.title} &#x21E8;
-            </Text>
-          </Animated.View>
-        </View>
+            {props.title} &#x21E8;
+          </Text>
+        </Animated.View>
       </View>
-    );
+    </View>
+  );
+};
+
+const restrict = (input: number, minimum: number, maximum: number): number => {
+  if (input < minimum) {
+    return minimum;
   }
 
-  private restrict(input: number, minimum: number, maximum: number): number {
-    if (input < minimum) {
-      return minimum;
-    }
-
-    if (input > maximum) {
-      return maximum;
-    }
-
-    return input;
+  if (input > maximum) {
+    return maximum;
   }
 
-  private setButtonSize(layoutEvent: LayoutChangeEvent): void {
-    this.setState({
-      buttonSize: layoutEvent.nativeEvent.layout,
-    });
-  }
-
-  private setSliderSize(layoutEvent: LayoutChangeEvent): void {
-    this.setState({
-      sliderSize: layoutEvent.nativeEvent.layout,
-    });
-  }
-}
+  return input;
+};

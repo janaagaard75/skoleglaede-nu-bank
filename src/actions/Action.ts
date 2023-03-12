@@ -1,4 +1,4 @@
-import { formatAsCurrency } from "../Formatter";
+import { formatAsCurrency } from "../formatAsCurrency";
 
 export abstract class Action {
   public constructor(amount: number) {

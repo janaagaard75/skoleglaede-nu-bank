@@ -4,7 +4,7 @@ import { Text, View } from "react-native";
 import { ifIphoneX } from "react-native-iphone-x-helper";
 import { HomeStackParamList } from "./App";
 import { Button } from "./Button";
-import { formatAsCurrency } from "./Formatter";
+import { formatAsCurrency } from "./formatAsCurrency";
 import { SlideButton } from "./SlideButton";
 
 type Props = NativeStackScreenProps<HomeStackParamList, "TransferScreen"> & {

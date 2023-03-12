@@ -1,4 +1,4 @@
-import { Formatter } from "../Formatter";
+import { formatAsCurrency } from "../formatAsCurrency";
 
 export abstract class Action {
   public constructor(amount: number) {
@@ -8,7 +8,7 @@ export abstract class Action {
   public readonly actionAmount: number;
 
   protected get formattedAmount(): string {
-    return Formatter.formatAsCurrency(this.actionAmount);
+    return formatAsCurrency(this.actionAmount);
   }
 
   public abstract get text(): string;

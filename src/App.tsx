@@ -5,6 +5,7 @@ import { HomeScreen } from "./HomeScreen";
 import { ResetScreen } from "./ResetScreen";
 import { ScannerScreen } from "./ScannerScreen";
 import { TransferScreen } from "./TransferScreen";
+import { useWallet } from "./useWallet";
 
 export type HomeStackParamList = {
   HomeScreen: undefined;
@@ -16,43 +17,78 @@ export type HomeStackParamList = {
 
 const HomeStack = createNativeStackNavigator<HomeStackParamList>();
 
-export const App = () => (
-  <NavigationContainer>
-    <HomeStack.Navigator
-      initialRouteName="HomeScreen"
-      screenOptions={{
-        headerBackTitle: "Tilbage",
-        headerStyle: {
-          backgroundColor: "#46a096",
-        },
-        headerTintColor: "#fff",
-      }}
-    >
-      <HomeStack.Screen
-        name="HomeScreen"
-        component={HomeScreen}
-        options={{ title: "Skoleglæde.nu Bank" }}
-      />
-      <HomeStack.Screen
-        name="BrokeScreen"
-        component={BrokeScreen}
-        options={{ title: "Fallit" }}
-      />
-      <HomeStack.Screen
-        name="ResetScreen"
-        component={ResetScreen}
-        options={{ title: "Nulstil" }}
-      />
-      <HomeStack.Screen
-        name="ScannerScreen"
-        component={ScannerScreen}
-        options={{ title: "Scan QR-kode" }}
-      />
-      <HomeStack.Screen
-        name="TransferScreen"
-        component={TransferScreen}
-        options={{ title: "Overfør" }}
-      />
-    </HomeStack.Navigator>
-  </NavigationContainer>
-);
+export const App = () => {
+  const [
+    credit,
+    savings,
+    broke,
+    performAction,
+    reset,
+    transferToSavings,
+    transferToSavingsAllowed,
+  ] = useWallet();
+
+  return (
+    <NavigationContainer>
+      <HomeStack.Navigator
+        initialRouteName="HomeScreen"
+        screenOptions={{
+          headerBackTitle: "Tilbage",
+          headerStyle: {
+            backgroundColor: "#46a096",
+          },
+          headerTintColor: "#fff",
+        }}
+      >
+        <HomeStack.Screen
+          name="HomeScreen"
+          options={{ title: "Skoleglæde.nu Bank" }}
+        >
+          {(props) => (
+            <HomeScreen credit={credit} savings={savings} {...props} />
+          )}
+        </HomeStack.Screen>
+        <HomeStack.Screen
+          name="BrokeScreen"
+          options={{
+            title: "Fallit",
+          }}
+        >
+          {(props) => <BrokeScreen onBrokeButtonSlide={broke} {...props} />}
+        </HomeStack.Screen>
+        <HomeStack.Screen
+          name="ResetScreen"
+          options={{
+            title: "Nulstil",
+          }}
+        >
+          {(props) => <ResetScreen onResetButtonSlide={reset} {...props} />}
+        </HomeStack.Screen>
+        <HomeStack.Screen
+          name="ScannerScreen"
+          options={{ title: "Scan QR-kode" }}
+        >
+          {(props) => (
+            <ScannerScreen okButtonSlide={performAction} {...props} />
+          )}
+        </HomeStack.Screen>
+        <HomeStack.Screen
+          name="TransferScreen"
+          options={{
+            title: "Overfør",
+          }}
+        >
+          {(props) => (
+            <TransferScreen
+              credit={credit}
+              onTransferToSavings={transferToSavings}
+              savings={savings}
+              transferToSavingsAllowed={transferToSavingsAllowed}
+              {...props}
+            />
+          )}
+        </HomeStack.Screen>
+      </HomeStack.Navigator>
+    </NavigationContainer>
+  );
+};

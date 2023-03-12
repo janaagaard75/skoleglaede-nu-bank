@@ -4,12 +4,13 @@ import { Component } from "react";
 import { Dimensions, Text, View } from "react-native";
 import { ifIphoneX } from "react-native-iphone-x-helper";
 import { Action } from "./actions/Action";
-import { QrCodeParser } from "./actions/QrCodeParser";
 import { HomeStackParamList } from "./App";
+import { parseCodeValue } from "./parseCodeValue";
 import { SlideButton } from "./SlideButton";
-import { Wallet } from "./Wallet";
 
-type Props = NativeStackScreenProps<HomeStackParamList, "ScannerScreen">;
+type Props = NativeStackScreenProps<HomeStackParamList, "ScannerScreen"> & {
+  okButtonSlide: (action: Action) => void;
+};
 
 enum CameraPermissionState {
   Requesting,
@@ -110,8 +111,8 @@ export class ScannerScreen extends Component<Props, State> {
           }}
         >
           <SlideButton
-            onTrigger={() => {
-              this.okButtonPressed();
+            onSlide={() => {
+              this.okButtonSlide();
             }}
             disabled={this.state.currentAction === undefined}
             title="Bekræft"
@@ -121,12 +122,12 @@ export class ScannerScreen extends Component<Props, State> {
     );
   }
 
-  private okButtonPressed() {
+  private okButtonSlide() {
     if (this.state.currentAction === undefined) {
       throw new Error("OK button pressed, but currentAction is undefined.");
     }
 
-    Wallet.performAction(this.state.currentAction);
+    this.props.okButtonSlide(this.state.currentAction);
 
     this.setState({
       codeScanned: false,
@@ -137,7 +138,7 @@ export class ScannerScreen extends Component<Props, State> {
   }
 
   private handleBarCodeScanned: BarCodeScannedCallback = ({ data }) => {
-    const action = QrCodeParser.parseCodeValue(data);
+    const action = parseCodeValue(data);
     this.setState({
       codeScanned: true,
       currentAction: action,

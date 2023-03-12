@@ -111,7 +111,7 @@ export class ScannerScreen extends Component<Props, State> {
           }}
         >
           <SlideButton
-            onTrigger={() => {
+            onSlide={() => {
               this.okButtonSlide();
             }}
             disabled={this.state.currentAction === undefined}

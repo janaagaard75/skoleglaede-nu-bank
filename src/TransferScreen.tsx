@@ -92,7 +92,7 @@ export const TransferScreen = (props: Props) => {
       >
         <SlideButton
           disabled={selectedTransfer === TransferAmount.None}
-          onTrigger={transfer}
+          onSlide={transfer}
           title="Overfør"
         />
       </View>

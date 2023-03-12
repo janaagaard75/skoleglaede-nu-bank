@@ -17,7 +17,7 @@ enum SliderState {
 
 interface Props {
   disabled?: boolean;
-  onTrigger: () => void;
+  onSlide: () => void;
   title: string;
 }
 
@@ -43,7 +43,7 @@ export const SlideButton = (props: Props) => {
     PanResponder.create({
       onPanResponderEnd: (_evt, _gestureState) => {
         if (sliderStateRef.current === SliderState.DropWillTriggerAction) {
-          props.onTrigger();
+          props.onSlide();
         }
 
         setSliderState(SliderState.Animating);

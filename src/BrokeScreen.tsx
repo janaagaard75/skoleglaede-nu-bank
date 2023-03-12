@@ -50,7 +50,7 @@ export const BrokeScreen = (props: Props) => {
           width: "100%",
         }}
       >
-        <SlideButton onTrigger={broke} title="Fallit" />
+        <SlideButton onSlide={broke} title="Fallit" />
       </View>
     </View>
   );

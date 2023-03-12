@@ -48,10 +48,20 @@ export const App = () => {
             <HomeScreen credit={credit} savings={savings} {...props} />
           )}
         </HomeStack.Screen>
-        <HomeStack.Screen name="BrokeScreen" options={{ title: "Fallit" }}>
+        <HomeStack.Screen
+          name="BrokeScreen"
+          options={{
+            title: "Fallit",
+          }}
+        >
           {(props) => <BrokeScreen onBrokeButtonSlide={broke} {...props} />}
         </HomeStack.Screen>
-        <HomeStack.Screen name="ResetScreen" options={{ title: "Nulstil" }}>
+        <HomeStack.Screen
+          name="ResetScreen"
+          options={{
+            title: "Nulstil",
+          }}
+        >
           {(props) => <ResetScreen onResetButtonSlide={reset} {...props} />}
         </HomeStack.Screen>
         <HomeStack.Screen
@@ -62,7 +72,12 @@ export const App = () => {
             <ScannerScreen okButtonSlide={performAction} {...props} />
           )}
         </HomeStack.Screen>
-        <HomeStack.Screen name="TransferScreen" options={{ title: "Overfør" }}>
+        <HomeStack.Screen
+          name="TransferScreen"
+          options={{
+            title: "Overfør",
+          }}
+        >
           {(props) => (
             <TransferScreen
               credit={credit}

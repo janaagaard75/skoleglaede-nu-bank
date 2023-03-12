@@ -16,39 +16,41 @@ export type HomeStackParamList = {
 
 const HomeStack = createNativeStackNavigator<HomeStackParamList>();
 
-export const App = () => (
-  <NavigationContainer>
-    <HomeStack.Navigator
-      initialRouteName="HomeScreen"
-      screenOptions={{
-        headerBackTitle: "Tilbage",
-        headerStyle: {
-          backgroundColor: "#46a096",
-        },
-        headerTintColor: "#fff",
-      }}
-    >
-      <HomeStack.Screen
-        name="HomeScreen"
-        options={{ title: "Skoleglæde.nu Bank" }}
+export const App = () => {
+  return (
+    <NavigationContainer>
+      <HomeStack.Navigator
+        initialRouteName="HomeScreen"
+        screenOptions={{
+          headerBackTitle: "Tilbage",
+          headerStyle: {
+            backgroundColor: "#46a096",
+          },
+          headerTintColor: "#fff",
+        }}
       >
-        {(props) => <HomeScreen {...props} />}
-      </HomeStack.Screen>
-      <HomeStack.Screen name="BrokeScreen" options={{ title: "Fallit" }}>
-        {(props) => <BrokeScreen {...props} />}
-      </HomeStack.Screen>
-      <HomeStack.Screen name="ResetScreen" options={{ title: "Nulstil" }}>
-        {(props) => <ResetScreen {...props} />}
-      </HomeStack.Screen>
-      <HomeStack.Screen
-        name="ScannerScreen"
-        options={{ title: "Scan QR-kode" }}
-      >
-        {(props) => <ScannerScreen {...props} />}
-      </HomeStack.Screen>
-      <HomeStack.Screen name="TransferScreen" options={{ title: "Overfør" }}>
-        {(props) => <TransferScreen {...props} />}
-      </HomeStack.Screen>
-    </HomeStack.Navigator>
-  </NavigationContainer>
-);
+        <HomeStack.Screen
+          name="HomeScreen"
+          options={{ title: "Skoleglæde.nu Bank" }}
+        >
+          {(props) => <HomeScreen {...props} />}
+        </HomeStack.Screen>
+        <HomeStack.Screen name="BrokeScreen" options={{ title: "Fallit" }}>
+          {(props) => <BrokeScreen {...props} />}
+        </HomeStack.Screen>
+        <HomeStack.Screen name="ResetScreen" options={{ title: "Nulstil" }}>
+          {(props) => <ResetScreen {...props} />}
+        </HomeStack.Screen>
+        <HomeStack.Screen
+          name="ScannerScreen"
+          options={{ title: "Scan QR-kode" }}
+        >
+          {(props) => <ScannerScreen {...props} />}
+        </HomeStack.Screen>
+        <HomeStack.Screen name="TransferScreen" options={{ title: "Overfør" }}>
+          {(props) => <TransferScreen {...props} />}
+        </HomeStack.Screen>
+      </HomeStack.Navigator>
+    </NavigationContainer>
+  );
+};

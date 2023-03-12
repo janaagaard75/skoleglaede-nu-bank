@@ -106,7 +106,6 @@ export const SlideButton = (props: Props) => {
     >
       <View
         onLayout={(layoutEvent) => {
-          console.log("setSliderSize");
           setSliderSize(layoutEvent.nativeEvent.layout);
         }}
         style={{
@@ -126,7 +125,6 @@ export const SlideButton = (props: Props) => {
         >
           <Text
             onLayout={(layoutEvent) => {
-              console.log("setButtonSize");
               setButtonSize(layoutEvent.nativeEvent.layout);
             }}
             style={{

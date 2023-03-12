@@ -1,5 +1,5 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Text, View } from "react-native";
 import { ifIphoneX } from "react-native-iphone-x-helper";
 import { HomeStackParamList } from "./App";
@@ -22,8 +22,11 @@ enum TransferAmount {
 export const TransferScreen = (props: Props) => {
   const [selectedTransfer, setSelectedTransfer] = useState(TransferAmount.None);
 
+  const selectedTransferRef = useRef<TransferAmount>(TransferAmount.None);
+  selectedTransferRef.current = selectedTransfer;
+
   const transfer = () => {
-    Wallet.transferToSavings(selectedTransfer);
+    Wallet.transferToSavings(selectedTransferRef.current);
     props.navigation.goBack();
   };
 

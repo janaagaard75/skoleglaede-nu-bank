@@ -3,13 +3,14 @@ import { Text, View } from "react-native";
 import { ifIphoneX } from "react-native-iphone-x-helper";
 import { HomeStackParamList } from "./App";
 import { SlideButton } from "./SlideButton";
-import { Wallet } from "./Wallet";
 
-export const ResetScreen = (
-  props: NativeStackScreenProps<HomeStackParamList, "ResetScreen">
-) => {
+type Props = NativeStackScreenProps<HomeStackParamList, "ResetScreen"> & {
+  onResetButtonSlide: () => void;
+};
+
+export const ResetScreen = (props: Props) => {
   const resetWallet = () => {
-    Wallet.reset();
+    props.onResetButtonSlide();
     props.navigation.goBack();
   };
 

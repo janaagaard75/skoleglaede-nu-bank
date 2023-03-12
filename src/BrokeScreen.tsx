@@ -3,13 +3,14 @@ import { Text, View } from "react-native";
 import { ifIphoneX } from "react-native-iphone-x-helper";
 import { HomeStackParamList } from "./App";
 import { SlideButton } from "./SlideButton";
-import { Wallet } from "./Wallet";
 
-export const BrokeScreen = (
-  props: NativeStackScreenProps<HomeStackParamList, "BrokeScreen">
-) => {
+type Props = NativeStackScreenProps<HomeStackParamList, "BrokeScreen"> & {
+  onBrokeButtonSlide: () => void;
+};
+
+export const BrokeScreen = (props: Props) => {
   const broke = () => {
-    Wallet.broke();
+    props.onBrokeButtonSlide();
     props.navigation.goBack();
   };
 

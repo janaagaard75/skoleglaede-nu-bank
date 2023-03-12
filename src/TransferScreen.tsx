@@ -6,9 +6,13 @@ import { HomeStackParamList } from "./App";
 import { Button } from "./Button";
 import { Formatter } from "./Formatter";
 import { SlideButton } from "./SlideButton";
-import { Wallet } from "./Wallet";
 
-type Props = NativeStackScreenProps<HomeStackParamList, "TransferScreen">;
+type Props = NativeStackScreenProps<HomeStackParamList, "TransferScreen"> & {
+  credit: number;
+  onTransferToSavings: (amount: TransferAmount) => void;
+  savings: number;
+  transferToSavingsAllowed: (amount: TransferAmount) => boolean;
+};
 
 enum TransferAmount {
   None = 0,
@@ -26,7 +30,7 @@ export const TransferScreen = (props: Props) => {
   selectedTransferRef.current = selectedTransfer;
 
   const transfer = () => {
-    Wallet.transferToSavings(selectedTransferRef.current);
+    props.onTransferToSavings(selectedTransferRef.current);
     props.navigation.goBack();
   };
 
@@ -47,10 +51,10 @@ export const TransferScreen = (props: Props) => {
           Vælg hvor mange penge du vil overføre fra din konto til din opsparing.
         </Text>
         <Text style={{ marginTop: 15 }}>
-          Konto: {Formatter.formatAsCurrency(Wallet.credit)}
+          Konto: {Formatter.formatAsCurrency(props.credit)}
         </Text>
         <Text style={{ marginTop: 5 }}>
-          Opsparing: {Formatter.formatAsCurrency(Wallet.savings)}
+          Opsparing: {Formatter.formatAsCurrency(props.savings)}
         </Text>
       </View>
       <View
@@ -70,7 +74,7 @@ export const TransferScreen = (props: Props) => {
         ].map((amount) => (
           <TransferAmountButton
             amount={amount}
-            enabled={Wallet.transferToSavingsAllowed(amount)}
+            enabled={props.transferToSavingsAllowed(amount)}
             key={amount}
             onPress={() => {
               setSelectedTransfer(amount);

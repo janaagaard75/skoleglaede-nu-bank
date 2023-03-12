@@ -30,29 +30,25 @@ export const App = () => (
     >
       <HomeStack.Screen
         name="HomeScreen"
-        component={HomeScreen}
         options={{ title: "Skoleglæde.nu Bank" }}
-      />
-      <HomeStack.Screen
-        name="BrokeScreen"
-        component={BrokeScreen}
-        options={{ title: "Fallit" }}
-      />
-      <HomeStack.Screen
-        name="ResetScreen"
-        component={ResetScreen}
-        options={{ title: "Nulstil" }}
-      />
+      >
+        {(props) => <HomeScreen {...props} />}
+      </HomeStack.Screen>
+      <HomeStack.Screen name="BrokeScreen" options={{ title: "Fallit" }}>
+        {(props) => <BrokeScreen {...props} />}
+      </HomeStack.Screen>
+      <HomeStack.Screen name="ResetScreen" options={{ title: "Nulstil" }}>
+        {(props) => <ResetScreen {...props} />}
+      </HomeStack.Screen>
       <HomeStack.Screen
         name="ScannerScreen"
-        component={ScannerScreen}
         options={{ title: "Scan QR-kode" }}
-      />
-      <HomeStack.Screen
-        name="TransferScreen"
-        component={TransferScreen}
-        options={{ title: "Overfør" }}
-      />
+      >
+        {(props) => <ScannerScreen {...props} />}
+      </HomeStack.Screen>
+      <HomeStack.Screen name="TransferScreen" options={{ title: "Overfør" }}>
+        {(props) => <TransferScreen {...props} />}
+      </HomeStack.Screen>
     </HomeStack.Navigator>
   </NavigationContainer>
 );

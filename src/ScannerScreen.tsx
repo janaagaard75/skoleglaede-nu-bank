@@ -4,7 +4,7 @@ import { Component } from "react";
 import { Dimensions, Text, View } from "react-native";
 import { ifIphoneX } from "react-native-iphone-x-helper";
 import { Action } from "./actions/Action";
-import { QrCodeParser } from "./actions/QrCodeParser";
+import { parseCodeValue } from "./actions/QrCodeParser";
 import { HomeStackParamList } from "./App";
 import { SlideButton } from "./SlideButton";
 
@@ -138,7 +138,7 @@ export class ScannerScreen extends Component<Props, State> {
   }
 
   private handleBarCodeScanned: BarCodeScannedCallback = ({ data }) => {
-    const action = QrCodeParser.parseCodeValue(data);
+    const action = parseCodeValue(data);
     this.setState({
       codeScanned: true,
       currentAction: action,

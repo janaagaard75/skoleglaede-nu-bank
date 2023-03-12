@@ -4,8 +4,8 @@ import { Component } from "react";
 import { Dimensions, Text, View } from "react-native";
 import { ifIphoneX } from "react-native-iphone-x-helper";
 import { Action } from "./actions/Action";
-import { parseCodeValue } from "./actions/QrCodeParser";
 import { HomeStackParamList } from "./App";
+import { parseCodeValue } from "./parseCodeValue";
 import { SlideButton } from "./SlideButton";
 
 type Props = NativeStackScreenProps<HomeStackParamList, "ScannerScreen"> & {

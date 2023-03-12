@@ -1,7 +1,7 @@
-import { Action } from "./Action";
-import { AddAction } from "./AddAction";
-import { SetAction } from "./SetAction";
-import { SubtractAction } from "./SubtractAction";
+import { Action } from "./actions/Action";
+import { AddAction } from "./actions/AddAction";
+import { SetAction } from "./actions/SetAction";
+import { SubtractAction } from "./actions/SubtractAction";
 
 export const parseCodeValue = (qrCodeValue: string): Action | undefined => {
   const actionAndHash = qrCodeValue.split("&");

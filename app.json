@@ -14,11 +14,9 @@
       "resizeMode": "contain"
     },
     "android": {
-      "package": "nu.skoleglaede.bank",
-      "versionCode": 123
+      "package": "nu.skoleglaede.bank"
     },
     "ios": {
-      "buildNumber": "1.2.3",
       "bundleIdentifier": "nu.skoleglaede.bank",
       "config": {
         "usesNonExemptEncryption": false

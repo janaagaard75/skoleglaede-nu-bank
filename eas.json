@@ -14,13 +14,14 @@
       }
     },
     "production": {
+      "autoIncrement": true,
       "ios": {
         "resourceClass": "m1-medium"
       }
     }
   },
   "cli": {
-    "appVersionSource": "remote",
+    "appVersionSource": "local",
     "version": ">= 3.7.2"
   },
   "submit": {

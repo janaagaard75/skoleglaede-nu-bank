@@ -3,10 +3,10 @@ import { BarCodeScannedCallback, BarCodeScanner } from "expo-barcode-scanner";
 import { Component } from "react";
 import { Dimensions, Text, View } from "react-native";
 import { ifIphoneX } from "react-native-iphone-x-helper";
-import { Action } from "./actions/Action";
 import { HomeStackParamList } from "./App";
-import { parseCodeValue } from "./parseCodeValue";
 import { SlideButton } from "./SlideButton";
+import { Action } from "./actions/Action";
+import { parseCodeValue } from "./parseCodeValue";
 
 type Props = NativeStackScreenProps<HomeStackParamList, "ScannerScreen"> & {
   okButtonSlide: (action: Action) => void;
@@ -72,8 +72,8 @@ export class ScannerScreen extends Component<Props, State> {
       );
     }
 
-    const floatViewfinderSize = 0.7 * this.state.windowWidth;
-    const roundedViewfinderSize = 2 * Math.round(floatViewfinderSize / 2);
+    const exactViewfinderSize = 0.7 * this.state.windowWidth;
+    const roundedViewfinderSize = 2 * Math.round(exactViewfinderSize / 2);
 
     return (
       <View style={{ flex: 1 }}>

@@ -46,6 +46,11 @@ export const HomeScreen = (props: Props) => {
         title="Konto"
         windowWidth={windowWidth}
       />
+      <View
+        style={{
+          height: 30,
+        }}
+      ></View>
       <Account
         amount={props.savings}
         icon="bank"

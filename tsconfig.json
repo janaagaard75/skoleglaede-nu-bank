@@ -7,6 +7,13 @@
     "noEmitHelpers": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitReturns": true,
+    "noUncheckedIndexedAccess": true,
     "strict": true
-  }
+  },
+  "exclude": [
+    "./dist/",
+    "./babel.config.js",
+    "./metro.config.js",
+    "./jest.config.js"
+  ]
 }

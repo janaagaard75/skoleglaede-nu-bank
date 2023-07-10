@@ -6,7 +6,7 @@ import { SubtractAction } from "./actions/SubtractAction";
 export const parseCodeValue = (qrCodeValue: string): Action | undefined => {
   const actionAndHash = qrCodeValue.split("&");
 
-  if (actionAndHash.length !== 2) {
+  if (actionAndHash[0] === undefined || actionAndHash[1] === undefined) {
     return undefined;
   }
 

@@ -18,7 +18,7 @@
     "validate": "yarn install --frozen-lockfile && yarn run check-types && yarn run lint"
   },
   "engines": {
-    "node": ">=14.0.0",
+    "node": ">=18.0.0",
     "yarn": ">=1.22"
   },
   "dependencies": {

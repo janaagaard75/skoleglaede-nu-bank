@@ -7,8 +7,8 @@
   "license": "MIT",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "build": "eas build --platform all",
-    "build-ios": "eas build --platform ios",
+    "build": "npx eas-cli@latest build --platform all",
+    "build-ios": "npx eas-cli@latest build --platform ios",
     "check-types": "tsc",
     "lint": "eslint --format unix \"**/*.ts\" \"**/*.tsx\"",
     "optimize-assets": "expo optimize",

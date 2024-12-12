@@ -1,21 +1,16 @@
 {
   "expo": {
-    "name": "Skoleglæde.nu Bank",
-    "description": "Virtual wallet for a game about private economy created by Skoleglæde.nu.",
-    "slug": "skoleglaede-nu-bank",
-    "privacy": "public",
-    "version": "1.2.4",
-    "orientation": "portrait",
-    "primaryColor": "#fff",
-    "icon": "./assets/app-icon.png",
-    "splash": {
-      "backgroundColor": "#fff",
-      "image": "./assets/splash-screen.png",
-      "resizeMode": "contain"
-    },
     "android": {
       "package": "nu.skoleglaede.bank"
     },
+    "description": "Virtual wallet for a game about private economy created by Skoleglæde.nu.",
+    "extra": {
+      "eas": {
+        "projectId": "05295410-15d6-11e9-8b84-313f96953860"
+      }
+    },
+    "githubUrl": "https://github.com/janaagaard75/skoleglaede-nu-bank",
+    "icon": "./assets/app-icon.png",
     "ios": {
       "bundleIdentifier": "nu.skoleglaede.bank",
       "infoPlist": {
@@ -27,17 +22,23 @@
     "locales": {
       "da": "./da.json"
     },
-    "githubUrl": "https://github.com/janaagaard75/skoleglaede-nu-bank",
-    "extra": {
-      "eas": {
-        "projectId": "05295410-15d6-11e9-8b84-313f96953860"
-      }
-    },
+    "name": "Skoleglæde.nu Bank",
+    "orientation": "portrait",
+    "plugins": ["expo-secure-store"],
+    "primaryColor": "#fff",
+    "privacy": "public",
     "runtimeVersion": {
       "policy": "sdkVersion"
     },
+    "slug": "skoleglaede-nu-bank",
+    "splash": {
+      "backgroundColor": "#fff",
+      "image": "./assets/splash-screen.png",
+      "resizeMode": "contain"
+    },
     "updates": {
       "url": "https://u.expo.dev/05295410-15d6-11e9-8b84-313f96953860"
-    }
+    },
+    "version": "1.2.5"
   }
 }

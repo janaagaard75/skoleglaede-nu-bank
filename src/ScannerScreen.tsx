@@ -1,5 +1,6 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { BarCodeScannedCallback, BarCodeScanner } from "expo-barcode-scanner";
+import { Camera, CameraView } from "expo-camera";
+import { BarCodeScanningResult } from "expo-camera/build/legacy/Camera.types";
 import { Component } from "react";
 import { Dimensions, Text, View } from "react-native";
 import { ifIphoneX } from "react-native-iphone-x-helper";
@@ -38,13 +39,17 @@ export class ScannerScreen extends Component<Props, State> {
   }
 
   public async componentDidMount() {
-    const { status } = await BarCodeScanner.requestPermissionsAsync();
-    this.setState({
-      cameraPermission:
-        status === "granted"
-          ? CameraPermissionState.Granted
-          : CameraPermissionState.Denied,
-    });
+    const getCameraPermissions = async () => {
+      const { status } = await Camera.requestCameraPermissionsAsync();
+      this.setState({
+        cameraPermission:
+          status === "granted"
+            ? CameraPermissionState.Granted
+            : CameraPermissionState.Denied,
+      });
+    };
+
+    getCameraPermissions();
   }
 
   public render() {
@@ -67,7 +72,6 @@ export class ScannerScreen extends Component<Props, State> {
             QR-koder. Du giver app'en adgang inde i indstillingerne på din
             telefon.
           </Text>
-          {/* Settings > Privacy > Camera */}
         </View>
       );
     }
@@ -84,9 +88,11 @@ export class ScannerScreen extends Component<Props, State> {
             justifyContent: "center",
           }}
         >
-          <BarCodeScanner
-            barCodeTypes={[BarCodeScanner.Constants.BarCodeType.qr]}
-            onBarCodeScanned={this.handleBarCodeScanned}
+          <CameraView
+            onBarcodeScanned={this.handleBarCodeScanned}
+            barcodeScannerSettings={{
+              barcodeTypes: ["qr"],
+            }}
             style={{
               height: roundedViewfinderSize,
               width: roundedViewfinderSize,
@@ -137,8 +143,8 @@ export class ScannerScreen extends Component<Props, State> {
     this.props.navigation.goBack();
   }
 
-  private handleBarCodeScanned: BarCodeScannedCallback = ({ data }) => {
-    const action = parseCodeValue(data);
+  private handleBarCodeScanned = (scanningResult: BarCodeScanningResult) => {
+    const action = parseCodeValue(scanningResult.data);
     this.setState({
       codeScanned: true,
       currentAction: action,

@@ -1,12 +1,12 @@
 import { Text, TouchableOpacity } from "react-native";
 
-interface Props {
-  fontSize: number;
+type Props = {
   disabled?: boolean;
+  fontSize: number;
   onPress: () => void;
   selected?: boolean;
   title: string;
-}
+};
 
 export const Button = (props: Props) => {
   const handlePress = () => {

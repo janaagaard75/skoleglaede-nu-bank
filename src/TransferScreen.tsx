@@ -7,13 +7,6 @@ import { Button } from "./Button";
 import { formatAsCurrency } from "./formatAsCurrency";
 import { SlideButton } from "./SlideButton";
 
-type Props = NativeStackScreenProps<HomeStackParamList, "TransferScreen"> & {
-  credit: number;
-  onTransferToSavings: (amount: TransferAmount) => void;
-  savings: number;
-  transferToSavingsAllowed: (amount: TransferAmount) => boolean;
-};
-
 enum TransferAmount {
   None = 0,
   Transfer100 = 100,
@@ -22,6 +15,13 @@ enum TransferAmount {
   Transfer1000 = 1000,
   TransferCustom = -1,
 }
+
+type Props = NativeStackScreenProps<HomeStackParamList, "TransferScreen"> & {
+  credit: number;
+  onTransferToSavings: (amount: TransferAmount) => void;
+  savings: number;
+  transferToSavingsAllowed: (amount: TransferAmount) => boolean;
+};
 
 export const TransferScreen = (props: Props) => {
   const [selectedTransfer, setSelectedTransfer] = useState(TransferAmount.None);

@@ -15,11 +15,11 @@ enum SliderState {
   Idle,
 }
 
-interface Props {
+type Props = {
   disabled?: boolean;
   onSlide: () => void;
   title: string;
-}
+};
 
 export const SlideButton = (props: Props) => {
   const [sliderState, setSliderState] = useState<SliderState>(SliderState.Idle);
@@ -41,6 +41,10 @@ export const SlideButton = (props: Props) => {
 
   const panResponder = useRef(
     PanResponder.create({
+      onMoveShouldSetPanResponder: (_evt, _gestureState) => true,
+
+      onMoveShouldSetPanResponderCapture: (_evt, _gestureState) => true,
+
       onPanResponderEnd: (_evt, _gestureState) => {
         if (sliderStateRef.current === SliderState.DropWillTriggerAction) {
           props.onSlide();
@@ -85,14 +89,10 @@ export const SlideButton = (props: Props) => {
       onPanResponderStart: (_evt, _gestureState) => {
         setSliderState(SliderState.DropWillCancel);
       },
-
-      onStartShouldSetPanResponder: (_evt, _gestureState) =>
-        !(props.disabled !== true),
-
-      onMoveShouldSetPanResponder: (_evt, _gestureState) => true,
-      onMoveShouldSetPanResponderCapture: (_evt, _gestureState) => true,
       onPanResponderTerminationRequest: (_evt, _gestureState) => true,
       onShouldBlockNativeResponder: (_evt, _gestureState) => true,
+      onStartShouldSetPanResponder: (_evt, _gestureState) =>
+        !(props.disabled !== true),
       onStartShouldSetPanResponderCapture: (_evt, _gestureState) => true,
     })
   ).current;

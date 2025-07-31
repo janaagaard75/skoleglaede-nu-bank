@@ -57,9 +57,7 @@ export const useWallet = () => {
     await save();
   };
 
-  const transferToSavingsAllowed = (amount: number) => {
-    return credit >= amount;
-  };
+  const transferToSavingsAllowed = (amount: number) => credit >= amount;
 
   return [
     credit,

@@ -23,7 +23,7 @@ jobs:
           cache: "yarn"
 
       - name: Install packages
-        run: yarn install --frozen-lockfile
+        run: yarn install --immutable
 
       - name: Check types
         run: yarn run check-types

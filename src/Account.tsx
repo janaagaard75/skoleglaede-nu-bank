@@ -4,7 +4,7 @@ import { formatAsCurrency } from "./formatAsCurrency";
 
 export const Account = (props: {
   amount: number;
-  icon: "credit-card" | "bank";
+  icon: "bank" | "credit-card";
   title: string;
   windowWidth: number;
 }) => (
@@ -22,12 +22,12 @@ export const Account = (props: {
       }}
     >
       <FontAwesome
+        name={props.icon}
         style={{
           fontSize: 0.05 * props.windowWidth,
           marginRight: 5,
           width: 24,
         }}
-        name={props.icon}
       />
       <Text
         style={{

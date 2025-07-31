@@ -33,7 +33,8 @@ export const parseCodeValue = (qrCodeValue: string): Action | undefined => {
 
     case "=":
       return new SetAction(amount);
-  }
 
-  return undefined;
+    default:
+      return undefined;
+  }
 };

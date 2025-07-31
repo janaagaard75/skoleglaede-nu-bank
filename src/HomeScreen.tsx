@@ -28,10 +28,10 @@ export const HomeScreen = (props: Props) => {
         }}
       >
         <Button
+          fontSize={13}
           onPress={() => {
             props.navigation.navigate("ResetScreen");
           }}
-          fontSize={13}
           title="Nulstil"
         />
       </View>
@@ -69,10 +69,10 @@ export const HomeScreen = (props: Props) => {
         }}
       >
         <Button
+          fontSize={16}
           onPress={() => {
             props.navigation.navigate("BrokeScreen");
           }}
-          fontSize={16}
           title="Fallit"
         />
       </View>
@@ -83,10 +83,10 @@ export const HomeScreen = (props: Props) => {
         }}
       >
         <Button
+          fontSize={16}
           onPress={() => {
             props.navigation.navigate("TransferScreen");
           }}
-          fontSize={16}
           title="Overfør til opsparing"
         />
       </View>
@@ -97,10 +97,10 @@ export const HomeScreen = (props: Props) => {
         }}
       >
         <Button
+          fontSize={16}
           onPress={() => {
             props.navigation.navigate("ScannerScreen");
           }}
-          fontSize={16}
           title="Scan QR-kode"
         />
       </View>

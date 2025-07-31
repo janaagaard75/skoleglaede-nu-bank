@@ -8,8 +8,8 @@ import { TransferScreen } from "./TransferScreen";
 import { useWallet } from "./useWallet";
 
 export type HomeStackParamList = {
-  HomeScreen: undefined;
   BrokeScreen: undefined;
+  HomeScreen: undefined;
   ResetScreen: undefined;
   ScannerScreen: undefined;
   TransferScreen: undefined;

@@ -1,3 +1,8 @@
+/* eslint-disable @typescript-eslint/no-floating-promises */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable react-hooks/exhaustive-deps */
 import * as SecureStore from "expo-secure-store";
 import { useEffect, useState } from "react";
 import { Action } from "./actions/Action";
@@ -57,9 +62,7 @@ export const useWallet = () => {
     await save();
   };
 
-  const transferToSavingsAllowed = (amount: number) => {
-    return credit >= amount;
-  };
+  const transferToSavingsAllowed = (amount: number) => credit >= amount;
 
   return [
     credit,

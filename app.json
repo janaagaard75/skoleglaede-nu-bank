@@ -26,7 +26,6 @@
     "orientation": "portrait",
     "plugins": ["expo-secure-store"],
     "primaryColor": "#fff",
-    "privacy": "public",
     "runtimeVersion": {
       "policy": "sdkVersion"
     },

@@ -18,10 +18,6 @@
     "update-dependencies": "yarn upgrade && npx syncyarnlock -k -s && yarn install",
     "validate": "yarn install --frozen-lockfile && yarn run check-types && yarn run check-lint"
   },
-  "engines": {
-    "node": ">=22.0.0",
-    "yarn": ">=4.9"
-  },
   "dependencies": {
     "@babel/core": "^7.24.0",
     "@expo/vector-icons": "^14.1.0",
@@ -53,6 +49,10 @@
     "tslib": "^2.5.0",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.39.1"
+  },
+  "engines": {
+    "node": ">=22.0.0",
+    "yarn": ">=4.9"
   },
   "packageManager": "yarn@4.9.2"
 }

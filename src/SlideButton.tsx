@@ -57,7 +57,8 @@ export const SlideButton = (props: Props) => {
           useNativeDriver: true,
         }).start(() => {
           if (sliderStateRef.current !== SliderState.DropWillCancel) {
-            setSliderState(SliderState.Idle);
+            // Defer state update to avoid "useInsertionEffect must not schedule updates" error
+            setTimeout(() => setSliderState(SliderState.Idle));
           }
         });
       },

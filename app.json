@@ -14,7 +14,8 @@
     "ios": {
       "bundleIdentifier": "nu.skoleglaede.bank",
       "infoPlist": {
-        "NSCameraUsageDescription": "This app uses the camera to scan QR codes. The app does not get access to your pictures."
+        "NSCameraUsageDescription": "This app uses the camera to scan QR codes. The app does not get access to your pictures.",
+        "ITSAppUsesNonExemptEncryption": false
       },
       "supportsTablet": false,
       "usesIcloudStorage": false

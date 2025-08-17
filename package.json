@@ -13,6 +13,7 @@
     "check-formatting": "prettier --check .",
     "check-lint": "eslint --format unix --max-warnings 0",
     "check-types": "tsc",
+    "eas-build-pre-install": "corepack enable",
     "optimize-assets": "expo optimize",
     "publish": "expo publish",
     "start": "yarn install && expo start --ios",

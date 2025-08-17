@@ -1,6 +1,5 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { Camera, CameraView } from "expo-camera";
-import { BarCodeScanningResult } from "expo-camera/build/legacy/Camera.types";
+import { BarcodeScanningResult, Camera, CameraView } from "expo-camera";
 import { Component } from "react";
 import { Dimensions, Text, View } from "react-native";
 import { ifIphoneX } from "react-native-iphone-x-helper";
@@ -143,7 +142,7 @@ export class ScannerScreen extends Component<Props, State> {
     this.props.navigation.goBack();
   }
 
-  private handleBarCodeScanned = (scanningResult: BarCodeScanningResult) => {
+  private handleBarCodeScanned = (scanningResult: BarcodeScanningResult) => {
     const action = parseCodeValue(scanningResult.data);
     this.setState({
       codeScanned: true,

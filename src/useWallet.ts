@@ -20,7 +20,7 @@ export const useWallet = () => {
     try {
       const walletString = await SecureStore.getItemAsync(key);
       if (walletString === null) {
-        reset();
+        await reset();
         return;
       }
 
@@ -28,7 +28,7 @@ export const useWallet = () => {
       setCredit(wallet.credit);
       setSavings(wallet.savings);
     } catch {
-      reset();
+      await reset();
     }
   };
 
@@ -57,9 +57,7 @@ export const useWallet = () => {
     await save();
   };
 
-  const transferToSavingsAllowed = (amount: number) => {
-    return credit >= amount;
-  };
+  const transferToSavingsAllowed = (amount: number) => credit >= amount;
 
   return [
     credit,

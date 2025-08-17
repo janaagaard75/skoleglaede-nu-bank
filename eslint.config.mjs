@@ -85,6 +85,9 @@ export default tsEslint.config(
       // NSwag adds a TSLint comment in the generated API clients.
       "@typescript-eslint/ban-tslint-comment": "off",
 
+      // Prefer using types over interfaces.
+      "@typescript-eslint/consistent-type-definitions": ["warn", "type"],
+
       // Require explicit accessibility modifiers since everything is public by default.
       "@typescript-eslint/explicit-member-accessibility": "warn",
 

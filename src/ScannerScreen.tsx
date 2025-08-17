@@ -1,5 +1,10 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { BarcodeScanningResult, Camera, CameraView } from "expo-camera";
+import {
+  BarcodeScanningResult,
+  Camera,
+  CameraView,
+  PermissionStatus,
+} from "expo-camera";
 import { Component } from "react";
 import { Dimensions, Text, View } from "react-native";
 import { ifIphoneX } from "react-native-iphone-x-helper";
@@ -8,22 +13,22 @@ import { SlideButton } from "./SlideButton";
 import { Action } from "./actions/Action";
 import { parseCodeValue } from "./parseCodeValue";
 
-type Props = NativeStackScreenProps<HomeStackParamList, "ScannerScreen"> & {
-  okButtonSlide: (action: Action) => void;
-};
-
 enum CameraPermissionState {
   Requesting,
   Denied,
   Granted,
 }
 
-interface State {
+type Props = NativeStackScreenProps<HomeStackParamList, "ScannerScreen"> & {
+  okButtonSlide: (action: Action) => void;
+};
+
+type State = {
   cameraPermission: CameraPermissionState;
   codeScanned: boolean;
   currentAction: Action | undefined;
   windowWidth: number;
-}
+};
 
 export class ScannerScreen extends Component<Props, State> {
   public constructor(props: Props) {
@@ -42,13 +47,13 @@ export class ScannerScreen extends Component<Props, State> {
       const { status } = await Camera.requestCameraPermissionsAsync();
       this.setState({
         cameraPermission:
-          status === "granted"
+          status === PermissionStatus.GRANTED
             ? CameraPermissionState.Granted
             : CameraPermissionState.Denied,
       });
     };
 
-    getCameraPermissions();
+    await getCameraPermissions();
   }
 
   public render() {
@@ -67,9 +72,9 @@ export class ScannerScreen extends Component<Props, State> {
           }}
         >
           <Text>
-            App'en skal have adgang til at bruge kameraet for at den kan scanne
-            QR-koder. Du giver app'en adgang inde i indstillingerne på din
-            telefon.
+            App&apos;en skal have adgang til at bruge kameraet for at den kan
+            scanne QR-koder. Du giver app&apos;en adgang inde i indstillingerne
+            på din telefon.
           </Text>
         </View>
       );
@@ -88,10 +93,10 @@ export class ScannerScreen extends Component<Props, State> {
           }}
         >
           <CameraView
-            onBarcodeScanned={this.handleBarCodeScanned}
             barcodeScannerSettings={{
               barcodeTypes: ["qr"],
             }}
+            onBarcodeScanned={this.handleBarCodeScanned}
             style={{
               height: roundedViewfinderSize,
               width: roundedViewfinderSize,
@@ -116,10 +121,10 @@ export class ScannerScreen extends Component<Props, State> {
           }}
         >
           <SlideButton
+            disabled={this.state.currentAction === undefined}
             onSlide={() => {
               this.okButtonSlide();
             }}
-            disabled={this.state.currentAction === undefined}
             title="Bekræft"
           />
         </View>

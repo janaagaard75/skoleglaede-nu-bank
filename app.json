@@ -25,13 +25,13 @@
     "name": "Skoleglæde.nu Bank",
     "orientation": "portrait",
     "plugins": ["expo-secure-store"],
-    "primaryColor": "#fff",
+    "primaryColor": "#ffffff",
     "runtimeVersion": {
       "policy": "sdkVersion"
     },
     "slug": "skoleglaede-nu-bank",
     "splash": {
-      "backgroundColor": "#fff",
+      "backgroundColor": "#ffffff",
       "image": "./assets/splash-screen.png",
       "resizeMode": "contain"
     },

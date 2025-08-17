@@ -10,13 +10,13 @@
     "build": "npx eas-cli@latest build --platform all",
     "build-android": "npx eas-cli@latest build --platform android",
     "build-ios": "npx eas-cli@latest build --platform ios",
+    "check-lint": "eslint --format unix --max-warnings 0",
     "check-types": "tsc",
-    "lint": "eslint --format unix \"**/*.ts\" \"**/*.tsx\"",
     "optimize-assets": "expo optimize",
     "publish": "expo publish",
     "start": "yarn install && expo start --ios",
     "update-dependencies": "yarn upgrade && npx syncyarnlock -k -s && yarn install",
-    "validate": "yarn install --frozen-lockfile && yarn run check-types && yarn run lint"
+    "validate": "yarn install --frozen-lockfile && yarn run check-types && yarn run check-lint"
   },
   "engines": {
     "node": ">=22.0.0",
@@ -40,16 +40,21 @@
   },
   "devDependencies": {
     "@babel/core": "^7.24.0",
+    "@stylistic/eslint-plugin": "^5.2.3",
     "@types/react": "~19.0.10",
-    "@typescript-eslint/eslint-plugin": "^5.59.2",
-    "@typescript-eslint/parser": "^5.59.2",
     "babel-preset-expo": "~13.0.0",
-    "eslint": "^8.40.0",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-react": "^7.32.2",
+    "eslint": "^9.33.0",
+    "eslint-formatter-unix": "^8.40.0",
+    "eslint-plugin-filename-export": "^2.0.0",
+    "eslint-plugin-perfectionist": "^4.15.0",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "6.0.0-rc.1",
+    "eslint-plugin-react-hooks-extra": "^1.52.5",
+    "eslint-plugin-react-native": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.20",
     "prettier": "^3.3.3",
-    "typescript": "~5.8.3"
+    "typescript": "~5.8.3",
+    "typescript-eslint": "^8.39.1"
   },
   "packageManager": "yarn@4.9.2"
 }

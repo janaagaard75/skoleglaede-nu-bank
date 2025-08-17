@@ -19,8 +19,8 @@
     "validate": "yarn install --frozen-lockfile && yarn run check-types && yarn run lint"
   },
   "engines": {
-    "node": ">=18.0.0",
-    "yarn": ">=1.22"
+    "node": ">=22.0.0",
+    "yarn": ">=4.9"
   },
   "dependencies": {
     "@expo/vector-icons": "^14.1.0",

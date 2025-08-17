@@ -24,10 +24,10 @@ type Props = {
 export const SlideButton = (props: Props) => {
   const [sliderState, setSliderState] = useState<SliderState>(SliderState.Idle);
   const [buttonSize, setButtonSize] = useState<LayoutRectangle | undefined>(
-    undefined
+    undefined,
   );
   const [sliderSize, setSliderSize] = useState<LayoutRectangle | undefined>(
-    undefined
+    undefined,
   );
 
   const sliderStateRef = useRef<SliderState>(SliderState.Idle);
@@ -63,8 +63,8 @@ export const SlideButton = (props: Props) => {
       },
       onPanResponderMove: (_evt, gestureState) => {
         if (
-          buttonSizeRef.current === undefined ||
-          sliderSizeRef.current === undefined
+          buttonSizeRef.current === undefined
+          || sliderSizeRef.current === undefined
         ) {
           throw new Error("Both buttonSize and sliderSize must be defined.");
         }
@@ -77,7 +77,7 @@ export const SlideButton = (props: Props) => {
         setSliderState(
           withinDropZone
             ? SliderState.DropWillTriggerAction
-            : SliderState.DropWillCancel
+            : SliderState.DropWillCancel,
         );
 
         animatedPosition.setValue(restrictedDx);
@@ -90,7 +90,7 @@ export const SlideButton = (props: Props) => {
       onStartShouldSetPanResponder: (_evt, _gestureState) =>
         !(props.disabled !== true),
       onStartShouldSetPanResponderCapture: (_evt, _gestureState) => true,
-    })
+    }),
   ).current;
 
   return (

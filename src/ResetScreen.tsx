@@ -50,7 +50,10 @@ export const ResetScreen = (props: Props) => {
           width: "100%",
         }}
       >
-        <SlideButton onSlide={resetWallet} title="Nulstil" />
+        <SlideButton
+          onSlide={resetWallet}
+          title="Nulstil"
+        />
       </View>
     </View>
   );

@@ -30,3 +30,6 @@ jobs:
 
       - name: Check for lint issues
         run: yarn run check-lint
+
+      - name: Check formatting
+        run: yarn check-formatting

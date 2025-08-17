@@ -308,7 +308,7 @@ export default tsEslint.config(
       // We allow using the `!` operator in our stories and test code.
       "@typescript-eslint/no-non-null-assertion": "off",
     },
-  }
+  },
 );
 
 // Run this command to inspect this ESLint configuration: `npx @eslint/config-inspector`.

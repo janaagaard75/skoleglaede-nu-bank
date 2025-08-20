@@ -39,6 +39,7 @@
     "eslint-plugin-react-refresh": "^0.4.20",
     "expo": "~53.0.20",
     "expo-camera": "~16.1.11",
+    "expo-font": "~13.3.2",
     "expo-secure-store": "~14.2.3",
     "expo-updates": "~0.28.17",
     "prettier": "^3.6.2",

@@ -7918,6 +7918,7 @@ __metadata:
     eslint-plugin-react-refresh: "npm:^0.4.20"
     expo: "npm:~53.0.20"
     expo-camera: "npm:~16.1.11"
+    expo-font: "npm:~13.3.2"
     expo-secure-store: "npm:~14.2.3"
     expo-updates: "npm:~0.28.17"
     prettier: "npm:^3.6.2"

@@ -53,6 +53,30 @@
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.39.1"
   },
+  "expo": {
+    "doctor": {
+      "reactNativeDirectoryCheck": {
+        "exclude": [
+          "@babel/core",
+          "@stylistic/eslint-plugin",
+          "eslint-formatter-unix",
+          "eslint-plugin-filename-export",
+          "eslint-plugin-perfectionist",
+          "eslint-plugin-react-hooks-extra",
+          "eslint-plugin-react-hooks",
+          "eslint-plugin-react-native",
+          "eslint-plugin-react-refresh",
+          "eslint-plugin-react",
+          "eslint",
+          "prettier",
+          "react-native-iphone-x-helper",
+          "tslib",
+          "typescript-eslint",
+          "typescript"
+        ]
+      }
+    }
+  },
   "engines": {
     "node": ">=22.0.0",
     "yarn": ">=4.9"

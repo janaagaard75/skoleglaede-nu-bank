@@ -10,46 +10,76 @@
     "build": "npx eas-cli@latest build --platform all",
     "build-android": "npx eas-cli@latest build --platform android",
     "build-ios": "npx eas-cli@latest build --platform ios",
+    "check-formatting": "prettier --check .",
+    "check-lint": "eslint --format unix --max-warnings 0",
     "check-types": "tsc",
-    "lint": "eslint --format unix \"**/*.ts\" \"**/*.tsx\"",
+    "eas-build-pre-install": "corepack enable",
     "optimize-assets": "expo optimize",
     "publish": "expo publish",
     "start": "yarn install && expo start --ios",
     "update-dependencies": "yarn upgrade && npx syncyarnlock -k -s && yarn install",
-    "validate": "yarn install --frozen-lockfile && yarn run check-types && yarn run lint"
-  },
-  "engines": {
-    "node": ">=18.0.0",
-    "yarn": ">=1.22"
+    "validate": "yarn install --frozen-lockfile && yarn run check-types && yarn run check-lint"
   },
   "dependencies": {
-    "@expo/vector-icons": "^14.0.3",
+    "@babel/core": "^7.24.0",
+    "@expo/vector-icons": "^14.1.0",
     "@react-navigation/native": "^6.1.6",
     "@react-navigation/native-stack": "^6.9.12",
-    "expo": "~51.0.39",
-    "expo-camera": "~15.0.16",
-    "expo-secure-store": "~13.0.2",
-    "expo-updates": "~0.25.27",
-    "react": "18.2.0",
-    "react-native": "0.74.5",
-    "react-native-gesture-handler": "~2.16.1",
+    "@stylistic/eslint-plugin": "^5.2.3",
+    "@types/react": "~19.0.10",
+    "babel-preset-expo": "~13.0.0",
+    "eslint": "^9.33.0",
+    "eslint-formatter-unix": "^8.40.0",
+    "eslint-plugin-filename-export": "^2.0.0",
+    "eslint-plugin-perfectionist": "^4.15.0",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "6.0.0-rc.1",
+    "eslint-plugin-react-hooks-extra": "^1.52.5",
+    "eslint-plugin-react-native": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.20",
+    "expo": "~53.0.20",
+    "expo-camera": "~16.1.11",
+    "expo-font": "~13.3.2",
+    "expo-secure-store": "~14.2.3",
+    "expo-updates": "~0.28.17",
+    "prettier": "^3.6.2",
+    "react": "19.0.0",
+    "react-native": "0.79.5",
+    "react-native-gesture-handler": "~2.24.0",
     "react-native-iphone-x-helper": "^1.3.1",
-    "react-native-safe-area-context": "4.10.5",
-    "react-native-screens": "3.31.1",
-    "tslib": "^2.5.0"
+    "react-native-safe-area-context": "5.4.0",
+    "react-native-screens": "~4.11.1",
+    "tslib": "^2.5.0",
+    "typescript": "~5.8.3",
+    "typescript-eslint": "^8.39.1"
   },
-  "devDependencies": {
-    "@babel/core": "^7.24.0",
-    "@types/react": "~18.2.0",
-    "@typescript-eslint/eslint-plugin": "^5.59.2",
-    "@typescript-eslint/parser": "^5.59.2",
-    "babel-preset-expo": "~11.0.0",
-    "eslint": "^8.40.0",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-react": "^7.32.2",
-    "prettier": "^3.3.3",
-    "typescript": "~5.3.3"
+  "expo": {
+    "doctor": {
+      "reactNativeDirectoryCheck": {
+        "exclude": [
+          "@babel/core",
+          "@stylistic/eslint-plugin",
+          "eslint-formatter-unix",
+          "eslint-plugin-filename-export",
+          "eslint-plugin-perfectionist",
+          "eslint-plugin-react-hooks-extra",
+          "eslint-plugin-react-hooks",
+          "eslint-plugin-react-native",
+          "eslint-plugin-react-refresh",
+          "eslint-plugin-react",
+          "eslint",
+          "prettier",
+          "react-native-iphone-x-helper",
+          "tslib",
+          "typescript-eslint",
+          "typescript"
+        ]
+      }
+    }
+  },
+  "engines": {
+    "node": ">=22.0.0",
+    "yarn": ">=4.9"
   },
   "packageManager": "yarn@4.9.2"
 }

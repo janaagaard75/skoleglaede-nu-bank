@@ -14,7 +14,8 @@
     "ios": {
       "bundleIdentifier": "nu.skoleglaede.bank",
       "infoPlist": {
-        "NSCameraUsageDescription": "This app uses the camera to scan QR codes. The app does not get access to your pictures."
+        "NSCameraUsageDescription": "This app uses the camera to scan QR codes. The app does not get access to your pictures.",
+        "ITSAppUsesNonExemptEncryption": false
       },
       "supportsTablet": false,
       "usesIcloudStorage": false
@@ -24,21 +25,20 @@
     },
     "name": "Skoleglæde.nu Bank",
     "orientation": "portrait",
-    "plugins": ["expo-secure-store"],
-    "primaryColor": "#fff",
-    "privacy": "public",
+    "plugins": ["expo-font", "expo-secure-store"],
+    "primaryColor": "#ffffff",
     "runtimeVersion": {
       "policy": "sdkVersion"
     },
     "slug": "skoleglaede-nu-bank",
     "splash": {
-      "backgroundColor": "#fff",
+      "backgroundColor": "#ffffff",
       "image": "./assets/splash-screen.png",
       "resizeMode": "contain"
     },
     "updates": {
       "url": "https://u.expo.dev/05295410-15d6-11e9-8b84-313f96953860"
     },
-    "version": "1.2.6"
+    "version": "1.2.7"
   }
 }

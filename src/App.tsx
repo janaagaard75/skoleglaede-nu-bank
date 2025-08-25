@@ -8,8 +8,8 @@ import { TransferScreen } from "./TransferScreen";
 import { useWallet } from "./useWallet";
 
 export type HomeStackParamList = {
-  HomeScreen: undefined;
   BrokeScreen: undefined;
+  HomeScreen: undefined;
   ResetScreen: undefined;
   ScannerScreen: undefined;
   TransferScreen: undefined;
@@ -45,7 +45,11 @@ export const App = () => {
           options={{ title: "Skoleglæde.nu Bank" }}
         >
           {(props) => (
-            <HomeScreen credit={credit} savings={savings} {...props} />
+            <HomeScreen
+              credit={credit}
+              savings={savings}
+              {...props}
+            />
           )}
         </HomeStack.Screen>
         <HomeStack.Screen
@@ -54,7 +58,12 @@ export const App = () => {
             title: "Fallit",
           }}
         >
-          {(props) => <BrokeScreen onBrokeButtonSlide={broke} {...props} />}
+          {(props) => (
+            <BrokeScreen
+              onBrokeButtonSlide={broke}
+              {...props}
+            />
+          )}
         </HomeStack.Screen>
         <HomeStack.Screen
           name="ResetScreen"
@@ -62,14 +71,22 @@ export const App = () => {
             title: "Nulstil",
           }}
         >
-          {(props) => <ResetScreen onResetButtonSlide={reset} {...props} />}
+          {(props) => (
+            <ResetScreen
+              onResetButtonSlide={reset}
+              {...props}
+            />
+          )}
         </HomeStack.Screen>
         <HomeStack.Screen
           name="ScannerScreen"
           options={{ title: "Scan QR-kode" }}
         >
           {(props) => (
-            <ScannerScreen okButtonSlide={performAction} {...props} />
+            <ScannerScreen
+              okButtonSlide={performAction}
+              {...props}
+            />
           )}
         </HomeStack.Screen>
         <HomeStack.Screen

@@ -3,24 +3,15 @@
     "development": {
       "channel": "development",
       "developmentClient": true,
-      "distribution": "internal",
-      "ios": {
-        "resourceClass": "m1-medium"
-      }
+      "distribution": "internal"
     },
     "preview": {
       "channel": "preview",
-      "distribution": "internal",
-      "ios": {
-        "resourceClass": "m1-medium"
-      }
+      "distribution": "internal"
     },
     "production": {
       "autoIncrement": true,
-      "channel": "production",
-      "ios": {
-        "resourceClass": "m1-medium"
-      }
+      "channel": "production"
     }
   },
   "cli": {
